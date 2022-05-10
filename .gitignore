@@ -63,7 +63,8 @@ dkms.conf
 
 # executables
 megaphone
-phonebook
+PhoneBook
+PhoneBook_test
 
 #apple trash
 .DS_Store

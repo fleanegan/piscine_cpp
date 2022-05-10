@@ -1,10 +1,6 @@
 #include <cstdio>
-//#include "test_utils.h"
-#include "test_parsing.h"
-//#include "test_distance.h"
-//#include "test_projection.h"
-//#include "test_init.h"
-//#include "gtest/gtest.h"
+#include "gtest/gtest.h"
+#include "test_utils.h"
 
 GTEST_API_ int main(int argc, char **argv) {
 	printf("Running main() from %s\n", __FILE__);

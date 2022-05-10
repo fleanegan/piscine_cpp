@@ -1,14 +1,14 @@
-NAME = phonebook
+NAME = PhoneBook
 
 # Paths
 
 SRC_PATH = ../ex01/
 OBJ_PATH = ../../obj/
-TEST_PATH = test/
+TEST_PATH = ../../test/ex01/
 
 # Names
 
-SRC_NAME =	megaphone.cpp\
+SRC_NAME =	PhoneBook.cpp\
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 
@@ -53,7 +53,7 @@ fclean:	clean
 	@echo "Delete $(NAME)"
 	@rm -f $(NAME) db
 
-test: PRE $(OBJ) $(SRC) $(TEST_SRC) $(TEST_HEADER)
+test: $(OBJ) $(SRC) $(TEST_SRC) $(TEST_HEADER)
 	$(CXX) -g -D TESTING -o $(NAME)_test $(OBJ) $(TEST_SRC) $(TEST_FLAGS) -I./$(SRC_PATH) $(TEST_FLAGS) -lm
 
 re:	fclean all
