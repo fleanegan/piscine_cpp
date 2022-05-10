@@ -8,9 +8,12 @@ TEST_PATH = ../../test/ex01/
 
 # Names
 
-SRC_NAME =	PhoneBook.cpp\
+SRC_NAME =	main.cpp\
+			PhoneBook.cpp\
+			Contact.cpp
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
+DEP_NAME := $(patsubst %.cpp,%.d,$(SRC_NAME))
 
 TEST_SRC_NAME =	test_main.cpp \
 
@@ -23,9 +26,9 @@ TEST_SRC = $(addprefix $(TEST_PATH),$(TEST_SRC_NAME))
 TEST_HEADER = $(addprefix $(TEST_PATH), $(TEST_HEADER_NAME))
 
 # Flags
-
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -g
+MAKE_DEP_FLAGS = -MMD -MP
 TEST_FLAGS	= -pthread -lgtest
 
 ifeq ($(MAKECMDGOALS),test)
@@ -35,6 +38,8 @@ ifeq ($(MAKECMDGOALS),testinc)
 	CFLAGS += -g -D TESTING
 endif
 
+-include $(DEP_NAME)
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -43,7 +48,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) -I$(SRC_PATH) -o $@ -c $<
+	$(CXX) $(CPPFLAGS) -I$(SRC_PATH) $(MAKE_DEP_FLAGS) -o $@ -c $<
 
 clean:
 	@echo "Delete $(OBJ_PATH)"

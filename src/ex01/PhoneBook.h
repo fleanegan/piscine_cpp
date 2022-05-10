@@ -8,7 +8,13 @@
 
 class PhoneBook
 {
+private:
 
+public:
+	PhoneBook();
+	PhoneBook(const PhoneBook & phoneBook);
+	PhoneBook & operator = (const PhoneBook & phoneBook);
+	virtual ~PhoneBook();
 };
 
 
