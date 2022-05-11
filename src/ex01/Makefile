@@ -32,10 +32,10 @@ MAKE_DEP_FLAGS = -MMD -MP
 TEST_FLAGS	= -pthread -lgtest
 
 ifeq ($(MAKECMDGOALS),test)
-	CFLAGS += -g -D TESTING
+	CPPFLAGS += -g -D TESTING
 endif
 ifeq ($(MAKECMDGOALS),testinc)
-	CFLAGS += -g -D TESTING
+	CPPFLAGS += -g -D TESTING
 endif
 
 -include $(DEP_NAME)
