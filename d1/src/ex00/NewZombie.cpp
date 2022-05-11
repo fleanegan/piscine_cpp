@@ -6,6 +6,11 @@
 
 Zombie* newZombie( std::string name )
 {
-	Zombie *result = new Zombie(name);
-	return (result);
+	try{
+		Zombie *result = new Zombie(name);
+		return (result);
+	}
+	catch (const std::exception & e){
+		std::cerr << "memory allocation failure" << std::endl;
+	}
 }

@@ -11,13 +11,12 @@
 class Zombie {
 private:
 	std::string name;
-
-	void announce(void);
 public:
-	Zombie(std::string name);
+	explicit Zombie(std::string name);
 	Zombie(const Zombie& other);
 	Zombie & operator = (const Zombie& other);
 	~Zombie();
+	void announce(void);
 };
 
 void randomChump( std::string name );
