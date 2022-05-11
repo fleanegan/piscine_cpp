@@ -6,6 +6,7 @@
 #include "Zombie.h"
 
 Zombie::Zombie(std::string name) : name(name){
+	announce();
 }
 
 void	Zombie::announce(void){
@@ -23,4 +24,12 @@ Zombie &Zombie::operator=(const Zombie &other) {
 
 Zombie::~Zombie() {
 	std::cout << name << " is cleared" << std::endl;
+}
+
+Zombie::Zombie() {
+
+}
+
+void Zombie::setName(std::string name) {
+	this->name = name;
 }

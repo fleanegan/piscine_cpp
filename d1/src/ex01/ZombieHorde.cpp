@@ -4,14 +4,16 @@
 
 #include "Zombie.h"
 
-Zombie* newZombie( std::string name )
-{
+Zombie *zombieHorde(int N, std::string name) {
+	Zombie *result;
+
 	try{
-		Zombie *result = new Zombie(name);
-		return (result);
+		result = new Zombie[N];
+		for (int i = 0; i < N; ++i)
+			result[i].setName(name);
 	}
 	catch (const std::exception & e){
 		std::cerr << "memory allocation failure" << std::endl;
-		return (nullptr);
 	}
+	return (result);
 }

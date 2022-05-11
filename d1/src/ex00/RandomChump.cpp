@@ -6,4 +6,5 @@
 
 void randomChump(std::string name) {
 	Zombie randomChump(std::move(name));
+	randomChump.announce();
 }
