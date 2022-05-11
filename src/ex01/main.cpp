@@ -31,13 +31,19 @@ void searchOnUserInput(PhoneBook &b) {
 	getline(std::cin, input);
 	b.print_search_results(input);
 	std::cout << "enter the index of the contact you want to display:";
-	std::cin >> index;
+	std::cin >> input;
+	try{
+		index = std::stoi(input);
+	}
+	catch (const std::exception & e){
+		std::cerr << "A NUMBER! YOU HAVE TO PRINT A NUMBER!" << std::endl;
+		return ;
+	}
 	try {
 		b.revealContactDetailsByIndex(index);
 	}
 	catch (const std::exception &e){
-		std::cerr << "oi mate! enter a valid index! I've had enough. Over and out." << std::endl;
-		exit(1);
+		std::cerr << "OI MATE! ENTER A VALID INDEX!" << std::endl;
 	}
 }
 

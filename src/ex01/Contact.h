@@ -29,8 +29,7 @@ public:
 	Contact	(const Contact & from);
 	int		isContainingSearchString(std::string &str);
 	void	showOverview(void);
-
-	void showDetails();
+	void	showDetails();
 };
 
 
