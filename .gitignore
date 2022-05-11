@@ -65,6 +65,9 @@ dkms.conf
 megaphone
 PhoneBook
 PhoneBook_test
+Accounts
+Account
+Zombie
 
 #apple trash
 .DS_Store
