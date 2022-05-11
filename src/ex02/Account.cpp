@@ -3,6 +3,7 @@
 //
 
 #include <ctime>
+#include <iostream>
 #include "Account.hpp"
 
 int Account::getNbAccounts(void) {
