@@ -1,33 +1,11 @@
 #include <iostream>
-#include "sedIsForLoosers.h"
 
 int initFiles(int argc, char *const *argv, std::ifstream &inFile, std::ofstream &outFile);
 std::string createSeparator(std::ifstream &inFile);
 std::string replace(const std::string &word, const char *replacee, const char *replacer);
 
-std::string substitute(const std::string &input, const std::string &replacee, const std::string &replacer) {
-	std::string result;
-	size_t start;
-	size_t end;
-
-	start = 0;
-	while (1)
-	{
-		end = input.find(replacee, start);
-		if (end == std::string::npos)
-		{
-			if (result.length() == 0)
-				return (input);
-			result += input.substr(start);
-			return (result);
-		}
-		result += input.substr(start, end - start);
-		start = end + replacee.length();
-		result += replacer;
-	}
-}
-
 #ifndef TESTING
+#include "fstream"
 
 int main(int argc, char *argv[]) {
 	std::ifstream	inFile;
