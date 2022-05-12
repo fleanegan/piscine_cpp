@@ -12,7 +12,8 @@ int main(){
 	while (1)
 	{
 		std::cout << "$:";
-		std::cin >> input;
+		if (! getline(std::cin,input))
+			return (0);
 		if (input == "SEARCH")
 			searchOnUserInput(b);
 		if (input == "ADD")
@@ -54,7 +55,6 @@ void addContactFromUserInput(PhoneBook &b) {
 	std::string pNumber;
 	std::string dSecret;
 
-	std::cin.ignore(1,'\n');
 	std::cout << "first name:";
 	getline(std::cin, fName);
 	std::cout << "last name:";
