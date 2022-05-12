@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
 
 	if (initFiles(argc, argv, inFile, outFile))
 		return (-1);
+	outFile << createSeparator(inFile);
 	while (inFile >> current_word) {
 		outFile << replace(current_word, argv[2], argv[3]);
 		outFile << createSeparator(inFile);
@@ -31,13 +32,10 @@ std::string replace(const std::string &word, const char *replacee, const char *r
 }
 
 std::string createSeparator(std::ifstream &inFile) {
-	if (inFile.peek() != EOF)
-	{
-		if (inFile.peek() == '\n')
-			return ("\n");
-		return(" ");
-	}
-	return ("");
+	std::string	result;
+	while (inFile.peek() != EOF && (inFile.peek() == '\n' || std::isspace(inFile.peek())))
+		result += inFile.get();
+	return (result);
 }
 
 int initFiles(int argc, char *const *argv, std::ifstream &inFile, std::ofstream &outFile) {
