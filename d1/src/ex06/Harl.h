@@ -2,8 +2,8 @@
 // Created by fleanegan on 12.05.22.
 //
 
-#ifndef EX03_WEAPON_H
-#define EX03_WEAPON_H
+#ifndef EX06_HARL_H
+#define EX06_HARL_H
 
 #include <string>
 #include <iostream>
@@ -44,4 +44,4 @@ public:
 };
 
 
-#endif //EX03_WEAPON_H
+#endif //EX06_HARL_H
