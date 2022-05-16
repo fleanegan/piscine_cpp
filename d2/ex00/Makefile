@@ -12,32 +12,28 @@ SRC_NAME =	main.cpp\
 			Fixed.cpp\
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
-DEP_NAME := $(patsubst %.cpp,%.d,$(SRC_NAME))
 
 TEST_SRC_NAME =	test_main.cpp \
 
 TEST_HEADER_NAME =	test_utils.h \
+					test_fixed.h\
 
 # Files
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+DEP_NAME := $(patsubst %.o,%.d,$(OBJ))
 TEST_SRC = $(addprefix $(TEST_PATH),$(TEST_SRC_NAME))
 TEST_HEADER = $(addprefix $(TEST_PATH), $(TEST_HEADER_NAME))
 
 # Flags
 CXX = c++
-CPPFLAGS = -Wall -Wextra -Werror -g
-MAKE_DEP_FLAGS = -MMD -MP
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
+MAKE_DEP_FLAGS = -MMD
 TEST_FLAGS	= -pthread -lgtest
 
 ifeq ($(MAKECMDGOALS),test)
 	CPPFLAGS += -g -D TESTING
 endif
-ifeq ($(MAKECMDGOALS),testinc)
-	CPPFLAGS += -g -D TESTING
-endif
-
--include $(DEP_NAME)
 
 all: $(NAME)
 
@@ -47,7 +43,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) -I$(SRC_PATH) $(MAKE_DEP_FLAGS) -o $@ -c $<
+	$(CXX) $(CPPFLAGS) -I$(SRC_PATH) $(MAKE_DEP_FLAGS) -c $< -o $@
 
 clean:
 	@echo "Delete $(OBJ_PATH)"
@@ -58,7 +54,9 @@ fclean:	clean
 	@rm -f $(NAME) db
 
 test: $(OBJ) $(SRC) $(TEST_SRC) $(TEST_HEADER)
-	$(CXX) -g -D TESTING -o $(NAME)_test $(OBJ) $(TEST_SRC) $(MAKE_DEP_FLAGS) $(TEST_FLAGS) -I./$(SRC_PATH) $(TEST_FLAGS) -lm
+	$(CXX) -g -D TESTING $(OBJ) $(TEST_SRC) $(MAKE_DEP_FLAGS) $(TEST_FLAGS) -I./$(SRC_PATH) $(TEST_FLAGS) -lm -o $(NAME)_test
+
+-include $(DEP_NAME)
 
 re:	fclean all
 

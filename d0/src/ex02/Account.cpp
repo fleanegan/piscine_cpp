@@ -28,8 +28,8 @@ _displayTimestamp();
 }
 
 Account::Account(int initial_deposit) :
-_amount(initial_deposit),
 _accountIndex(_nbAccounts++),
+_amount(initial_deposit),
 _nbDeposits(0),
 _nbWithdrawals(0){
 	_displayTimestamp();
@@ -80,7 +80,7 @@ void Account::displayStatus(void) const {
 }
 
 void Account::_displayTimestamp(void) {
-	std::time_t t = std::time(nullptr);   // get time now
+	std::time_t t = std::time(NULL);   // get time now
 	std::tm* now = std::localtime(&t);
 	std::cout
 		<< "["

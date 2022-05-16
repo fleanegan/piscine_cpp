@@ -1,8 +1,9 @@
 #include <iostream>
 #include "PhoneBook.h"
 
-void addContactFromUserInput(PhoneBook &b);
-void searchOnUserInput(PhoneBook &b);
+void    addContactFromUserInput(PhoneBook &b);
+void    searchOnUserInput(PhoneBook &b);
+int     to_int(char const *s);
 
 #ifndef TESTING
 
@@ -28,13 +29,12 @@ void searchOnUserInput(PhoneBook &b) {
 	std::string input;
 	int			index;
 
-	std::cout << "search string:" << std::endl;
-	getline(std::cin, input);
 	b.print_search_results(input);
 	std::cout << "enter the index of the contact you want to display:";
-	std::cin >> input;
+	if (! getline(std::cin,input))
+		return ;
 	try{
-		index = std::stoi(input);
+		index = to_int(input.c_str());
 	}
 	catch (const std::exception & e){
 		std::cerr << "A NUMBER! YOU HAVE TO PRINT A NUMBER!" << std::endl;
@@ -45,6 +45,7 @@ void searchOnUserInput(PhoneBook &b) {
 	}
 	catch (const std::exception &e){
 		std::cerr << "OI MATE! ENTER A VALID INDEX!" << std::endl;
+		return ;
 	}
 }
 
@@ -72,6 +73,28 @@ void addContactFromUserInput(PhoneBook &b) {
 	catch (const std::exception &e){
 		std::cerr << "empty fields are not allowed!" << std::endl;
 	}
+}
+
+int to_int(const char *s) {
+	int		result;
+	bool	negate;
+
+	if ( s == NULL || *s == '\0' )
+	    throw std::invalid_argument("null or empty string argument");
+	negate = (s[0] == '-');
+	if ( *s == '+' || *s == '-' )
+		++s;
+	if ( *s == '\0')
+		throw std::invalid_argument("sign character only.");
+	result = 0;
+	while(*s)
+	{
+		if ( *s < '0' || *s > '9' || result >= MAX_CONTACT_COUNT)
+		    throw std::invalid_argument("invalid input string");
+		result = result * 10  - (*s - '0');  //assume negative number
+		++s;
+	}
+	return negate ? result : -result; //-result is positive!
 }
 
 #endif

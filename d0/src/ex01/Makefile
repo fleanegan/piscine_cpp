@@ -27,7 +27,7 @@ TEST_HEADER = $(addprefix $(TEST_PATH), $(TEST_HEADER_NAME))
 
 # Flags
 CXX = c++
-CPPFLAGS = -Wall -Wextra -Werror -g
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
 MAKE_DEP_FLAGS = -MMD -MP
 TEST_FLAGS	= -pthread -lgtest
 
@@ -38,17 +38,15 @@ ifeq ($(MAKECMDGOALS),testinc)
 	CPPFLAGS += -g -D TESTING
 endif
 
--include $(DEP_NAME)
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Build $(NAME)"
-	@$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CPPFLAGS) $(MAKE_DEP_FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) -I$(SRC_PATH) $(MAKE_DEP_FLAGS) -o $@ -c $<
+	$(CXX) $(CPPFLAGS) $(MAKE_DEP_FLAGS) -I$(SRC_PATH) -c $< -o $@
 
 clean:
 	@echo "Delete $(OBJ_PATH)"
@@ -60,6 +58,8 @@ fclean:	clean
 
 test: $(OBJ) $(SRC) $(TEST_SRC) $(TEST_HEADER)
 	$(CXX) -g -D TESTING -o $(NAME)_test $(OBJ) $(TEST_SRC) $(TEST_FLAGS) -I./$(SRC_PATH) $(TEST_FLAGS) -lm
+
+-include $(DEP_NAME)
 
 re:	fclean all
 

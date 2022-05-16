@@ -18,7 +18,7 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 # Flags
 
 CXX = c++
-CPPFLAGS = -Wall -Wextra -Werror -g
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 all: $(NAME)
 
