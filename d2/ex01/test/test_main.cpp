@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "gtest/gtest.h"
 #include "test_utils.h"
-#include "test_string.h"
+#include "test_fixed.h"
 
 GTEST_API_ int main(int argc, char **argv) {
 	printf("Running main() from %s\n", __FILE__);
