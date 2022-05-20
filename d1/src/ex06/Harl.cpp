@@ -5,10 +5,26 @@
 #include "Harl.h"
 
 Harl::Harl(const Harl &other) {
+	complainArray[0].name = "DEBUG";
+	complainArray[0].function = &Harl::debug;
+	complainArray[1].name = "INFO";
+	complainArray[1].function = &Harl::info;
+	complainArray[2].name = "WARNING";
+	complainArray[2].function = &Harl::warning;
+	complainArray[3].name = "ERROR";
+	complainArray[3].function = &Harl::error;
 	(void) other;
 }
 
 Harl::Harl() : filter(0){
+	complainArray[0].name = "DEBUG";
+	complainArray[0].function = &Harl::debug;
+	complainArray[1].name = "INFO";
+	complainArray[1].function = &Harl::info;
+	complainArray[2].name = "WARNING";
+	complainArray[2].function = &Harl::warning;
+	complainArray[3].name = "ERROR";
+	complainArray[3].function = &Harl::error;
 
 }
 
@@ -52,4 +68,4 @@ void Harl::complain() {
 
 void Harl::setFilter(const int &filter) {
 	this->filter = filter;
-}
+}  
