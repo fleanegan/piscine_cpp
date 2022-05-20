@@ -8,38 +8,38 @@
 
 Fixed::Fixed(int value) : value(0){
 	throwIfTooBig(value);
-	setRawBits(value << fractionalBits);
+	this->value = value << fractionalBits;
+	storeSign(value);
 }
 
 Fixed::Fixed(float value) : value(0){
-	float fractionalRest;
-
 	throwIfTooBig((int)value);
-	fractionalRest = getFractionalRest(value);
-	storeSign(value);
-	floatToBits(fractionalRest);
+	this->value = roundf(value * (1 << fractionalBits ));
 }
 
 Fixed::Fixed(const Fixed &other){
 	value = other.getRawBits();
-	std::cout << "copy constructor" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "copy constructor" << std::endl;
 	(void) other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other){
 	this->value = other.getRawBits();
-	std::cout << "= operator" << std::endl;
-	return *this;
+	if (DEBUG_ME)
+		std::cout << "= operator" << std::endl;
+	return (*this);
 }
 
 Fixed::~Fixed() {
-	std::cout << "destructor" << std::endl;
-
+	if (DEBUG_ME)
+		std::cout << "destructor" << std::endl;
 }
 
 Fixed::Fixed() : value(0){
 	(void) fractionalBits;
-	std::cout << "classic constructor" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "classic constructor" << std::endl;
 }
 
 // end of constructors
@@ -63,16 +63,7 @@ int Fixed::toInt() const{
 }
 
 float Fixed::toFloat() const{
-	float   result;
-
-	result = 0;
-	for (int i = 0; i < 31; ++i) {
-		if (this->value & (1 << i))
-		result += powf(2, (float)(i - fractionalBits));
-	}
-	if (this->value & 1 << 31)
-		result *= -1.f;
-	return (result);
+	return ((float)this->value / (float)(1 << fractionalBits));
 }
 
 void Fixed::throwIfTooBig(int value) const {
@@ -80,22 +71,7 @@ void Fixed::throwIfTooBig(int value) const {
 		throw std::exception();
 }
 
-float Fixed::getFractionalRest(float newValue) {
-	return fabsf(fabsf(newValue) - fabsf((float) toInt()));
-}
-
 void Fixed::storeSign(float newValue) {
 	if (newValue < 0)
 		value = value | 1 << 31;
-}
-
-void Fixed::floatToBits(float fractionalRest) {
-	for (int i = 31; i > 0; --i) {
-		float subtractor = powf(2, (float)(i - fractionalBits));
-		if (fractionalRest >= subtractor)
-		{
-			fractionalRest -= subtractor;
-			value = value | 1 << i;
-		}
-	}
 }

@@ -5,6 +5,7 @@
 #ifndef EX00_FIXED_H
 #define EX00_FIXED_H
 #define FRACTIONAL_BITS 8
+#define DEBUG_ME 0
 
 #include <iostream>
 
@@ -27,9 +28,9 @@ public:
 	void    setRawBits(int value);
 	int     toInt() const;
 	float   toFloat() const;
-	void    floatToBits(float fractionalRest);
+
 	void    storeSign(float newValue);
-	float   getFractionalRest(float newValue);
+
 	void    throwIfTooBig(int value) const;
 };
 

@@ -4,9 +4,13 @@
 
 #ifndef EX00_FIXED_H
 #define EX00_FIXED_H
-#define FRACTIONAL_BITS 8
 
+#define FRACTIONAL_BITS 8
 #include <iostream>
+#include <cmath>
+#ifndef DEBUG_ME
+# define DEBUG_ME 0
+#endif
 
 class Fixed;
 
@@ -33,9 +37,9 @@ public:
 	Fixed   operator * (const Fixed &other) const;
 	Fixed   operator / (const Fixed &other) const;
 	Fixed&  operator ++ ();
-	const Fixed   operator ++ (int);
+	const Fixed operator ++ (int);
 	Fixed&  operator -- ();
-	const Fixed   operator -- (int);
+	const Fixed operator -- (int);
 	static Fixed&  min (Fixed const &a, Fixed const & b);
 	static Fixed&  max (Fixed const &a, Fixed const & b);
 	static Fixed&  min (Fixed &a, Fixed & b);
@@ -49,7 +53,7 @@ public:
 	void    toBits(float fractionalRest);
 	void    storeSign(float newValue);
 	float   getFractionalRest(float newValue);
-	void    throwIfTooBig(int value) const;
+	static void    throwIfTooBig(int value) ;
 
 };
 

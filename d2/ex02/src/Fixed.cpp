@@ -2,9 +2,7 @@
 // Created by fleanegan on 12.05.22.
 //
 
-#include <cmath>
 #include "Fixed.h"
-
 
 Fixed::Fixed(int value) : value(0){
 	throwIfTooBig(value);
@@ -19,23 +17,27 @@ Fixed::Fixed(float value) : value(0){
 
 Fixed::Fixed(const Fixed &other){
 	value = other.getRawBits();
-//	std::cout << "copy constructor" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "copy constructor" << std::endl;
 	(void) other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other){
 	this->value = other.getRawBits();
-//	std::cout << "= operator" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "= operator" << std::endl;
 	return (*this);
 }
 
 Fixed::~Fixed() {
-//	std::cout << "destructor" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "destructor" << std::endl;
 }
 
 Fixed::Fixed() : value(0){
 	(void) fractionalBits;
-//	std::cout << "classic constructor" << std::endl;
+	if (DEBUG_ME)
+		std::cout << "classic constructor" << std::endl;
 }
 
 // end of constructors
@@ -62,13 +64,9 @@ float Fixed::toFloat() const{
 	return ((float)this->value / (float)(1 << fractionalBits));
 }
 
-void Fixed::throwIfTooBig(int value) const {
+void Fixed::throwIfTooBig(int value) {
 	if (std::fabs(value) > pow(2, 32 - fractionalBits))
 		throw std::exception();
-}
-
-float Fixed::getFractionalRest(float newValue) {
-	return (fabsf(fabsf(newValue) - fabsf((float) toInt())));
 }
 
 void Fixed::storeSign(float newValue) {
