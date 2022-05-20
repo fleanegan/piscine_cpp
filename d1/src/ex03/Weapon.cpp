@@ -4,7 +4,7 @@
 
 #include "Weapon.h"
 
-Weapon::Weapon(std::string type) : type(std::move(type)){
+Weapon::Weapon(std::string type) : type(type){
 }
 
 Weapon::Weapon(const Weapon &other) {

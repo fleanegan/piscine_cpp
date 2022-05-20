@@ -25,7 +25,7 @@ TEST_HEADER = $(addprefix $(TEST_PATH), $(TEST_HEADER_NAME))
 
 # Flags
 CXX = c++
-CPPFLAGS = -Wall -Wextra -Werror -g
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
 MAKE_DEP_FLAGS = -MMD -MP
 TEST_FLAGS	= -pthread -lgtest
 

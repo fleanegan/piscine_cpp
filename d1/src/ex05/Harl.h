@@ -24,10 +24,7 @@ private:
 	void info( void )  const;
 	void warning( void )  const;
 	void error( void )  const;
-	funDict complainArray[4] = {{"DEBUG", &Harl::debug},\
-							{"INFO", &Harl::info},\
-							{"WARNING", &Harl::warning},\
-							{"ERROR", &Harl::error}};
+	funDict complainArray[4];
 public:
 	Harl(const Harl& other);
 	Harl & operator = (const Harl& other);

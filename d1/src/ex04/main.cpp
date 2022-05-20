@@ -1,24 +1,18 @@
 #include <iostream>
+#include "fstream"
 
-int initFiles(int argc, char *const *argv, std::ifstream &inFile, std::ofstream &outFile);
-
-bool
-isCurrentWordReplaceeCandidate(std::ifstream &inFile, const std::string &current_word, const std::string &replacee);
-
-void doReplacement(std::ofstream &outFile, std::string &current_word, const std::string &replacer);
-
-void writeLeftoversToOutfile(const std::string &replacee, const std::string &replacer, std::ofstream &outFile,
-							 std::string &current_word);
-
+int         initFiles(int argc, char *const *argv, std::ifstream &inFile, std::ofstream &outFile);
+bool        isCurrentWordReplaceeCandidate(\
+			std::ifstream &inFile, const std::string &current_word, const std::string &replacee);
+void        doReplacement(std::ofstream &outFile, std::string &current_word, const std::string &replacer);
+void        writeLeftoversToOutfile(\
+			const std::string &replacee, const std::string &replacer, std::ofstream &outFile, std::string &current_word);
 std::string &appendNextCharIfEmptyReplacementCandidate(std::ifstream &inFile, std::string &replacementCandidate);
-
-void writeReplacerIfMatch(const std::string &replacee, const std::string &replacer, std::ofstream &outFile,
-						  std::string &current_word);
-
-void buildReplacementCandidate(const std::string &replacee, std::ifstream &inFile, std::string &current_word);
+void        writeReplacerIfMatch(\
+			const std::string &replacee, const std::string &replacer, std::ofstream &outFile, std::string &current_word);
+void        buildReplacementCandidate(const std::string &replacee, std::ifstream &inFile, std::string &current_word);
 
 #ifndef TESTING
-#include "fstream"
 
 int main(int argc, char *argv[]) {
 	std::ifstream	inFile;
@@ -47,6 +41,7 @@ void	buildReplacementCandidate(\
 	while (isCurrentWordReplaceeCandidate(inFile, current_word, replacee)\
 			&& current_word != replacee)
 		current_word += inFile.get();
+	std::cout << current_word << std::endl;
 }
 
 void	writeReplacerIfMatch(\
@@ -79,7 +74,7 @@ void	doReplacement(\
 
 bool	isCurrentWordReplaceeCandidate(\
 		std::ifstream &inFile, const std::string &current_word, const std::string &replacee) {
-	return inFile.peek() != EOF && replacee.find(current_word) != std::string::npos;
+	return inFile.peek() != EOF && replacee.find(current_word) == 0;
 }
 
 int initFiles(\
@@ -91,8 +86,8 @@ int initFiles(\
 		return (1);
 	inFileName = argv[1];
 	outFileName = inFileName + ".replace";
-	inFile.open(inFileName);
-	outFile.open(outFileName);
+	inFile.open(inFileName.c_str());
+	outFile.open(outFileName.c_str());
 	if (inFile.is_open() == false)
 	{
 		std::cerr << "the file " << argv[1] << " does not exist" << std::endl;

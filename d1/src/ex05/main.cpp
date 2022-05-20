@@ -5,10 +5,10 @@
 int main() {
 	Harl h;
 	h.complain("banana");
-	h.complain("info");
-	h.complain("debug");
-	h.complain("warning");
-	h.complain("error");
+	h.complain("INFO");
+	h.complain("DEBUG");
+	h.complain("WARNING");
+	h.complain("ERROR");
 	return (0);
 }
 

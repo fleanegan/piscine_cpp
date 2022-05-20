@@ -24,6 +24,7 @@ Zombie &Zombie::operator=(const Zombie &other) {
 
 Zombie::~Zombie() {
 	std::cout << name << " is cleared" << std::endl;
+	//delete &name;
 }
 
 Zombie::Zombie() {

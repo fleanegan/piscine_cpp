@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
 	std::string	input;
 
 	if (argc != 2)
-		return (-1);
+		return (1);
 	input = argv[1];
 	if (input == "DEBUG")
 		h.setFilter(0);

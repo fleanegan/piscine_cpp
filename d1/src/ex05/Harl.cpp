@@ -4,11 +4,27 @@
 
 #include "Harl.h"
 
-Harl::Harl(const Harl &other) {
+Harl::Harl(const Harl &other) : complainArray(){
+	complainArray[0].name = "DEBUG";
+	complainArray[0].function = &Harl::debug;
+	complainArray[1].name = "INFO";
+	complainArray[1].function = &Harl::info;
+	complainArray[2].name = "WARNING";
+	complainArray[2].function = &Harl::warning;
+	complainArray[3].name = "ERROR";
+	complainArray[3].function = &Harl::error;
 	(void) other;
 }
 
 Harl &Harl::operator=(const Harl &other) {
+	complainArray[0].name = "DEBUG";
+	complainArray[0].function = &Harl::debug;
+	complainArray[1].name = "INFO";
+	complainArray[1].function = &Harl::info;
+	complainArray[2].name = "WARNING";
+	complainArray[2].function = &Harl::warning;
+	complainArray[3].name = "ERROR";
+	complainArray[3].function = &Harl::error;
 	return *this;
 	(void) other;
 }
@@ -36,11 +52,11 @@ void Harl::error(void)  const{
 void Harl::complain(std::string level) {
 	HarlMemFn	ptr;
 
-	ptr = nullptr;
-	for (int i = 0; i < 4 && ptr == nullptr; ++i) {
-		ptr = complainArray[i].name == level ? complainArray[i].function : nullptr;
+	ptr = NULL;
+	for (int i = 0; i < 4 && ptr == NULL; ++i) {
+		ptr = complainArray[i].name == level ? complainArray[i].function : NULL;
 	}
-	if (ptr == nullptr)
+	if (ptr == NULL)
 	{
 		std::cerr << "level did not match any of Harls know how" << std::endl;
 		return ;
@@ -49,5 +65,12 @@ void Harl::complain(std::string level) {
 }
 
 Harl::Harl() {
-
+	complainArray[0].name = "DEBUG";
+	complainArray[0].function = &Harl::debug;
+	complainArray[1].name = "INFO";
+	complainArray[1].function = &Harl::info;
+	complainArray[2].name = "WARNING";
+	complainArray[2].function = &Harl::warning;
+	complainArray[3].name = "ERROR";
+	complainArray[3].function = &Harl::error;
 }

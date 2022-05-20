@@ -4,7 +4,7 @@
 
 #include "Zombie.h"
 
-Zombie* newZombie( std::string name )
+Zombie* newZombie(std::string name)
 {
 	try{
 		Zombie *result = new Zombie(name);
@@ -12,6 +12,6 @@ Zombie* newZombie( std::string name )
 	}
 	catch (const std::exception & e){
 		std::cerr << "memory allocation failure" << std::endl;
-		return (nullptr);
+		return (NULL);
 	}
 }

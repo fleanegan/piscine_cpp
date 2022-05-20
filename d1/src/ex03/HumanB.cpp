@@ -9,7 +9,7 @@ void HumanB::setWeapon(const Weapon &weapon) {
 	this->weapon = const_cast<Weapon *>(&weapon);
 }
 
-HumanB::HumanB(const std::string &name) : name(name), weapon(nullptr){
+HumanB::HumanB(const std::string &name) : name(name), weapon(NULL){
 }
 
 HumanB::HumanB(const HumanB &other) : name(other.name), weapon(other.weapon){
@@ -25,7 +25,7 @@ HumanB::~HumanB() {
 }
 
 void HumanB::attack(void) {
-	if (weapon == nullptr)
+	if (weapon == NULL)
 		std::cout << name << " attacks with their bare hands" << std::endl;
 	else
 		std::cout << name << " attacks with their " << weapon->getType() << std::endl;

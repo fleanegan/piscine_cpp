@@ -16,11 +16,10 @@ public:
 	Zombie(const Zombie& other);
 	Zombie & operator = (const Zombie& other);
 	~Zombie();
-	void announce(void);
-
 	Zombie();
 
 	void setName(std::string name);
+	void announce(void);
 };
 
 Zombie* zombieHorde( int N, std::string name);
