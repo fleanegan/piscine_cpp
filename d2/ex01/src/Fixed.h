@@ -8,13 +8,14 @@
 #define DEBUG_ME 0
 
 #include <iostream>
+#include <cmath>
 
 class Fixed;
 
 class Fixed {
 private:
 	static const int    fractionalBits = FRACTIONAL_BITS;
-	int                 value;
+	int                 rawBits;
 
 public:
 	Fixed();
@@ -24,16 +25,12 @@ public:
 	Fixed & operator = (const Fixed& other);
 	~Fixed();
 
-	int     getRawBits() const;
-	void    setRawBits(int value);
 	int     toInt() const;
 	float   toFloat() const;
-
-	void    storeSign(float newValue);
-
+	int     getRawBits() const;
+	void setRawBits(const int &value);
 };
 
-std::ostream& operator<< (std::ostream& stream, Fixed &a);
-
+std::ostream& operator<< (std::ostream& stream, const Fixed &a);
 
 #endif //EX00_FIXED_H

@@ -5,31 +5,35 @@
 #include "Fixed.h"
 
 Fixed::Fixed(const Fixed &other){
-	value = other.getRawBits();
-	std::cout << "copy constructor" << std::endl;
-	(void) other;
+	if (DEBUG_ME)
+		std::cout << "copy constructor" << std::endl;
+	*this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other){
-	this->value = other.getRawBits();
-	std::cout << "= operator" << std::endl;
-	return *this;
+	rawBits = other.rawBits;
+	if (DEBUG_ME)
+		std::cout << "= operator" << std::endl;
+	return (*this);
 }
 
 Fixed::~Fixed() {
-	std::cout << "destructor" << std::endl;
-
+	if (DEBUG_ME)
+		std::cout << "destructor" << std::endl;
 }
 
-Fixed::Fixed() : value(0){
-	(void) fractionalBits;
-	std::cout << "classic constructor" << std::endl;
+Fixed::Fixed() : rawBits(0){
+	if (DEBUG_ME)
+		std::cout << "classic constructor" << std::endl;
 }
+
+// end of constructors
+
 
 int Fixed::getRawBits() const {
-	return value;
+	return (rawBits);
 }
 
-void Fixed::setRawBits(int value) {
-	this->value = value;
+void Fixed::setRawBits(const int &value) {
+	rawBits = value;
 }

@@ -17,9 +17,7 @@ class Fixed;
 class Fixed {
 private:
 	static const int    fractionalBits = FRACTIONAL_BITS;
-	int                 value;
-
-	void    storeSign(float newValue);
+	int                 rawBits;
 public:
 	Fixed();
 	explicit Fixed(int value);
@@ -28,7 +26,7 @@ public:
 	~Fixed();
 
 	int     getRawBits() const;
-	void    setRawBits(int value);
+	void	setRawBits(const int & value);
 	int     toInt() const;
 	float   toFloat() const;
 	Fixed   &operator = (const Fixed &other);
@@ -47,8 +45,8 @@ public:
 	const Fixed operator ++ (int);
 	Fixed&  operator -- ();
 	const Fixed operator -- (int);
-	static Fixed&  min (Fixed const &a, Fixed const & b);
-	static Fixed&  max (Fixed const &a, Fixed const & b);
+	static const Fixed&  min (Fixed const &a, Fixed const & b);
+	static const Fixed&  max (Fixed const &a, Fixed const & b);
 	static Fixed&  min (Fixed &a, Fixed & b);
 	static Fixed&  max (Fixed &a, Fixed & b);
 };
