@@ -5,8 +5,8 @@
 #include "ClapTrap.h"
 
 
-ClapTrap::ClapTrap(std::string &name) : name(name), hitPoints(10), energyPoints(10), attacDamage(0){
-
+ClapTrap::ClapTrap(const std::string &name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0){
+	printConstructorMessage();
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
@@ -14,21 +14,65 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other){
+	(void) other;
 	return (*this);
 }
 
 ClapTrap::~ClapTrap() {
-
+	printDestructorMessage();
 }
 
 void ClapTrap::attack(const std::string &target) {
-
+	if (energyPoints == 0)
+	{
+		printUnsuccessfullAttackMessage();
+		return ;
+	}
+	energyPoints--;
+	printSuccessfullAttackMessage(target);
+	(void) target;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-
+	printDamageMessage(amount);
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
+	if (energyPoints == 0)
+	{
+		printUnsuccessfulRepairMessage();
+		return ;
+	}
+	hitPoints += amount;
+	energyPoints--;
+	printSuccessfulRepairMessage(amount);
+	(void) amount;
+}
 
+void ClapTrap::printSuccessfulRepairMessage(unsigned int amount) const {
+	std::cout << "ClapTrap " << name << " got repaired by " << amount << " hitpoints, causing a total of " << hitPoints << " !" << std::endl;
+}
+
+void ClapTrap::printUnsuccessfulRepairMessage() const {
+	std::cout << "oi mate! cannot repair stuff without energy left. buy some kong strong" << std::endl;
+}
+
+void ClapTrap::printConstructorMessage() const {
+	std::cout << "ClapTrap " << name << " is born. It greedily looks at the frigo" << std::endl;
+}
+
+void ClapTrap::printDestructorMessage() const {
+	std::cout << "ClapTrap " << name << " has given its last bit. " << std::endl;
+}
+
+void ClapTrap::printSuccessfullAttackMessage(const std::string &target) const {
+	std::cout << "ClapTrap " << name << " attacks " << target << " , causing " << attackDamage << " points of damage!" << std::endl;
+}
+
+void ClapTrap::printUnsuccessfullAttackMessage() const {
+	std::cout << "oi mate! cannot attack without energy left. buy some kong strong" << std::endl;
+}
+
+void ClapTrap::printDamageMessage(unsigned int amount) const {
+	std::cout << "ClapTrap " << name << " was attacked taking " << amount << " points of damage!" << std::endl;
 }

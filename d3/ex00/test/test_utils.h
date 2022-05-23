@@ -2,7 +2,7 @@
 # define TEST_UTILS_H
 
 #include "gtest/gtest.h"
-#include "../src/Fixed.h"
+#include "../src/ClapTrap.h"
 #include <iostream>
 
 #endif	 // TEST_UTILS_H

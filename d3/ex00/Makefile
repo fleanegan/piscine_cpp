@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = ClapTrap
 
 # Paths
 
@@ -16,7 +16,6 @@ OBJ_NAME = $(SRC_NAME:.cpp=.o)
 TEST_SRC_NAME =	test_main.cpp \
 
 TEST_HEADER_NAME =	test_utils.h \
-					test_fixed.h\
 
 # Files
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
