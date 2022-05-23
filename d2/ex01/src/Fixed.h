@@ -31,7 +31,6 @@ public:
 
 	void    storeSign(float newValue);
 
-	void    throwIfTooBig(int value) const;
 };
 
 std::ostream& operator<< (std::ostream& stream, Fixed &a);

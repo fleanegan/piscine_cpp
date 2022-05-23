@@ -5,13 +5,11 @@
 #include "Fixed.h"
 
 Fixed::Fixed(int value) : value(0){
-	throwIfTooBig(value);
 	this->value = value << fractionalBits;
 	storeSign(value);
 }
 
 Fixed::Fixed(float value) : value(0){
-	throwIfTooBig((int)value);
 	this->value = roundf(value * (1 << fractionalBits ));
 }
 
@@ -62,11 +60,6 @@ int Fixed::toInt() const{
 
 float Fixed::toFloat() const{
 	return ((float)this->value / (float)(1 << fractionalBits));
-}
-
-void Fixed::throwIfTooBig(int value) {
-	if (std::fabs(value) > pow(2, 32 - fractionalBits))
-		throw std::exception();
 }
 
 void Fixed::storeSign(float newValue) {

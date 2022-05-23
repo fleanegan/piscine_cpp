@@ -4,7 +4,7 @@
 
 #include <iostream>
 int main( void ) {
-	for (int i = -10, j = -7; i < 100; i += 2, j+= 2) {
+	for (int i = -10, j = -7; i < 20; i += 2, j+= 2) {
 		float af = i * 0.2f;
 		float bf = j * 0.45f;
 		Fixed a = Fixed(af);

@@ -14,10 +14,6 @@ TEST(test_fixed, constructor_from_int){
 	ASSERT_EQ(a.getRawBits(), 42 << 8);
 }
 
-TEST(test_fixed, constructor_from_int_to_big_for_Fixed_throws){
-	ASSERT_ANY_THROW(Fixed((int)400000000200));
-}
-
 TEST(test_fixed, constructor_from_float){
 	Fixed a(0.75f);
 	ASSERT_FLOAT_EQ(a.toFloat(), 0.75);
