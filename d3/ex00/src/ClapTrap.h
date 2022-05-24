@@ -14,6 +14,14 @@ protected:
 	unsigned int	hitPoints;
 	unsigned int	energyPoints;
 	unsigned int	attackDamage;
+
+	void printConstructorMessage() const;
+	void printDestructorMessage() const;
+	void printUnsuccessfullAttackMessage() const;
+	void printSuccessfullAttackMessage(const std::string &target) const;
+	void printDamageMessage(unsigned int amount) const;
+	void printUnsuccessfulRepairMessage() const;
+	void printSuccessfulRepairMessage(unsigned int amount) const;
 public:
 	ClapTrap(const std::string &name);
 	ClapTrap(const ClapTrap &other);
@@ -23,13 +31,6 @@ public:
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-	void printConstructorMessage() const;
-	void printDestructorMessage() const;
-	void printUnsuccessfullAttackMessage() const;
-	void printSuccessfullAttackMessage(const std::string &target) const;
-	void printDamageMessage(unsigned int amount) const;
-	void printUnsuccessfulRepairMessage() const;
-	void printSuccessfulRepairMessage(unsigned int amount) const;
 };
 
 
