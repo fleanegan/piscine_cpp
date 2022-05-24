@@ -19,7 +19,10 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other){
-	(void) other;
+	this->hitPoints = other.hitPoints;
+	this->energyPoints = other.energyPoints;
+	this->attackDamage = other.attackDamage;
+	this->name = other.name;
 	return (*this);
 }
 
