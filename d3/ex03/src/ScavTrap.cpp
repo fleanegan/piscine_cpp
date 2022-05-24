@@ -19,7 +19,10 @@ ScavTrap::ScavTrap(const ScavTrap &other)
 	other.attackDamage){}
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
-	(void) other;
+	this->hitPoints = other.hitPoints;
+	this->energyPoints = other.energyPoints;
+	this->attackDamage = other.attackDamage;
+	this->name = other.name;
 	return *this;
 }
 

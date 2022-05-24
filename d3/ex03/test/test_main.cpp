@@ -4,6 +4,7 @@
 #include "test_clap_trap.hpp"
 #include "test_scav_trap.hpp"
 #include "test_frag_trap.hpp"
+#include "test_diamond_trap.hpp"
 
 GTEST_API_ int main(int argc, char **argv) {
 	printf("Running main() from %s\n", __FILE__);

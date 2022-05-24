@@ -19,7 +19,10 @@ FragTrap::FragTrap(const FragTrap &other)
 	other.attackDamage){}
 
 FragTrap &FragTrap::operator=(const FragTrap &other) {
-	(void) other;
+	this->hitPoints = other.hitPoints;
+	this->energyPoints = other.energyPoints;
+	this->attackDamage = other.attackDamage;
+	this->name = other.name;
 	return *this;
 }
 
