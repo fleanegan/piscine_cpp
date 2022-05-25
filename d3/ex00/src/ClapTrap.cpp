@@ -26,7 +26,7 @@ ClapTrap::~ClapTrap() {
 }
 
 void ClapTrap::attack(const std::string &target) {
-	if (energyPoints == 0)
+	if (energyPoints == 0 || hitPoints <= 0)
 	{
 		printUnsuccessfullAttackMessage();
 		return ;
@@ -41,7 +41,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (energyPoints == 0)
+	if (energyPoints == 0 || hitPoints <= 0)
 	{
 		printUnsuccessfulRepairMessage();
 		return ;

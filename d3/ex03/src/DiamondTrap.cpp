@@ -4,13 +4,19 @@ DiamondTrap::DiamondTrap(const std::string &name) \
 	: ClapTrap(name+"_clap_name", 100, 50, 30), \
 	ScavTrap(name), \
 	FragTrap(name), \
-	name(name){}
+	name(name){
+
+	printConstructorMessage(name);
+}
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other) \
 	: ClapTrap(other.name+"_clap_name", 100, 50, 30), \
 	ScavTrap(other.name), \
 	FragTrap(other.name), \
-	name(other.name){}
+	name(other.name){
+
+	printConstructorMessage(name);
+}
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other){
     this->hitPoints = other.hitPoints;
@@ -20,7 +26,9 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other){
     return *this;
 }
 
-DiamondTrap::~DiamondTrap(){}
+DiamondTrap::~DiamondTrap(){
+
+}
 
 void DiamondTrap::attack(const std::string& target){
     this->ScavTrap::attack(target);
@@ -32,4 +40,12 @@ void DiamondTrap::whoAmI(){
 
 void DiamondTrap::beRepaired(const int &amount) {
 	this->ClapTrap::beRepaired(amount);
+}
+
+void DiamondTrap::printConstructorMessage(const std::string &name) const {
+	std::cout << "DiamondTrap " << name << " commenced to exist" << std::endl;
+}
+
+void DiamondTrap::printDestructorMessage(const std::string &name) const {
+	std::cout << "DiamondTrap " << name << " is over and out" << std::endl;
 }

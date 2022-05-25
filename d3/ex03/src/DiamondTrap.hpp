@@ -15,6 +15,8 @@ public:
 	void attack(const std::string& target);
 	void whoAmI();
 	void beRepaired(const int &amount);
+	void printConstructorMessage(const std::string &name) const;
+	void printDestructorMessage(const std::string &name) const;
 };
 
 

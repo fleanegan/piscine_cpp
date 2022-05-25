@@ -31,13 +31,13 @@ FragTrap::~FragTrap() {
 }
 
 void FragTrap::printPersonalizedConstructorMessage() const {
-	std::cout << "FragTrap " << name << " emerged from pure unpasteurized milk" << std::endl;
+	std::cout << "FragTrap " << this->ClapTrap::name << " emerged from pure unpasteurized milk" << std::endl;
 }
 
 void FragTrap::printPersonalizedDestructorMessage() const {
-	std::cout << "FragTrap " << name << " has been utterly ravaged" << std::endl;
+	std::cout << "FragTrap " << this->ClapTrap::name << " has been utterly ravaged" << std::endl;
 }
 
 void FragTrap::highFivesGuys() {
-	std::cout << "FragTrap " << name << " registered a high five request" << std::endl;
+	std::cout << "FragTrap " << this->ClapTrap::name << " registered a high five request" << std::endl;
 }

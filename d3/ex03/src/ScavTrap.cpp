@@ -31,21 +31,21 @@ ScavTrap::~ScavTrap() {
 }
 
 void ScavTrap::printPersonalizedConstructorMessage() const {
-	std::cout << "ScavTrap " << name << " is born and looks tremendously aromatic" << std::endl;
+	std::cout << "ScavTrap " << this->ClapTrap::name << " is born and looks tremendously aromatic" << std::endl;
 }
 
 void ScavTrap::printPersonalizedDestructorMessage() const {
-	std::cout << "ScavTrap " << name << " is done" << std::endl;
+	std::cout << "ScavTrap " << this->ClapTrap::name << " is done" << std::endl;
 }
 
 void ScavTrap::printUnsuccessfullAttackMessage() const {
-	std::cout << "ScavTrap " << name << " cannot attack since there is no energy left." << std::endl;
+	std::cout << "ScavTrap " << this->ClapTrap::name << " cannot attack since there is no energy left." << std::endl;
 }
 
 void ScavTrap::printSuccessfullAttackMessage(const std::string &target) const {
-	std::cout << "ScavTrap " << name << " is fiercely attacking " << target << std::endl;
+	std::cout << "ScavTrap " << this->ClapTrap::name << " is fiercely attacking " << target << std::endl;
 }
 
 void ScavTrap::guardGate() {
-	std::cout << "ScavTrap " << name << " is now in Gate keeper mode" << std::endl;
+	std::cout << "ScavTrap " << this->ClapTrap::name << " is now in Gate keeper mode" << std::endl;
 }

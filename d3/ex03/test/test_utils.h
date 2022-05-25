@@ -90,7 +90,7 @@ private:
 };
 
 struct DiamondTrapTester : public DiamondTrap{
-	DiamondTrapTester(const std::string & name) : DiamondTrap(name), ClapTrap(name, 100, 50, 30){}
+	DiamondTrapTester(const std::string & name) : DiamondTrap(name), ClapTrap(name+"_clap_name", 100, 50, 30){}
 
 	int getHitPoints() const{
 		return this->hitPoints;

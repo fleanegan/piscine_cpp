@@ -9,7 +9,7 @@
 #include <iostream>
 
 class ClapTrap {
-protected:
+private:
 	std::string		name;
 	unsigned int	hitPoints;
 	unsigned int	energyPoints;
