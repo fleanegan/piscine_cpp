@@ -8,7 +8,7 @@ Point::Point() : x(0), y(0) {
 
 }
 
-Point::Point(const Point &other) {
+Point::Point(const Point &other) : x(other.x), y(other.y) {
 	std::cout << "testestest";
 	*this = other;
 }
