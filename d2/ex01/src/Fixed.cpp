@@ -4,9 +4,9 @@
 
 #include "Fixed.h"
 
-Fixed::Fixed(int value) : rawBits(value << fractionalBits){}
+Fixed::Fixed(const int value) : rawBits(value << fractionalBits){}
 
-Fixed::Fixed(float value) : rawBits(roundf(value * (1 << fractionalBits ))){}
+Fixed::Fixed(const float value) : rawBits(roundf(value * (1 << fractionalBits ))){}
 
 Fixed::Fixed(const Fixed &other){
 	if (DEBUG_ME)

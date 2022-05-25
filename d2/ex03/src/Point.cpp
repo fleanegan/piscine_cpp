@@ -9,12 +9,12 @@ Point::Point() : x(0), y(0) {
 }
 
 Point::Point(const Point &other) {
+	std::cout << "testestest";
 	*this = other;
 }
 
 Point &Point::operator=(const Point &other) {
-	this->x = other.x;
-	this->y = other.y;
+	(void) other;
 	return *this;
 }
 
