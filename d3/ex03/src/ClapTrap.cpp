@@ -107,7 +107,7 @@ void ClapTrap::printSuccessfullAttackMessage(const std::string &target) const {
 }
 
 void ClapTrap::printUnsuccessfullAttackMessage() const {
-	std::cout << "oi mate! cannot attack without energy left. buy some kong strong" << std::endl;
+	std::cout << "oi mate! cannot attack without energy and hit points left. buy some kong strong" << std::endl;
 }
 
 void ClapTrap::printDamageMessage(unsigned int amount) const {

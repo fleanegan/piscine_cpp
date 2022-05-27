@@ -11,33 +11,33 @@
 DiamondTrap getTestDiamondTrap(const std::string &name) {
 	DiamondTrap a(name);
 	DiamondTrap b(a);
-	a = b;
+	DiamondTrap c = b;
 	std::cout << "constructed test object: Done" << std::endl;
-	return (a);
+	return (c);
 }
 
 ScavTrap getTestScavTrap(const std::string &name) {
 	ScavTrap a(name);
 	ScavTrap b(a);
-	a = b;
+	ScavTrap c = b;
 	std::cout << "constructed test object: Done" << std::endl;
-	return (a);
+	return (c);
 }
 
 FragTrap getTestFragTrap(const std::string &name) {
 	FragTrap a(name);
 	FragTrap b(a);
-	a = b;
+	FragTrap c = b;
 	std::cout << "constructed test object: Done" << std::endl;
-	return (a);
+	return (c);
 }
 
 ClapTrap getTestClapTrap(const std::string &name) {
 	ClapTrap a(name);
 	ClapTrap b(a);
-	a = b;
+	ClapTrap c = b;
 	std::cout << "constructed test object: Done" << std::endl;
-	return (a);
+	return (c);
 }
 
 #endif	 // TEST_UTILS_H

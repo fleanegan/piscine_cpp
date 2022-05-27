@@ -1,7 +1,7 @@
 #include "test_utils.h"
 
 TEST(testScavTrap, initVariablesAreSetCorrectly){
-	ScavTrapTester c("epoisses");
+	ScavTrap c = getTestScavTrap("epoisses");
 
 	ASSERT_EQ(100, c.getHitPoints());
 	ASSERT_EQ(50, c.getEnergyPoints());
@@ -9,17 +9,17 @@ TEST(testScavTrap, initVariablesAreSetCorrectly){
 }
 
 TEST(testScavTrap, attackingDoesNotRequireAnOpponentObject){
-	ScavTrapTester c("beaufort");
+	ScavTrap c = getTestScavTrap("beaufort");
 	c.attack("emmental");
 }
 
 TEST(testScavTrap, repairScavTrap){
-	ScavTrapTester c("mimolette");
+	ScavTrap c = getTestScavTrap("mimolette");
 	c.beRepaired(34);
 }
 
 TEST(testScavTrap, callingTheGuardGateFunction){
-	ScavTrapTester c("roquefort");
+	ScavTrap c = getTestScavTrap("roquefort");
 	c.guardGate();
 }
 

@@ -1,26 +1,7 @@
 #include "test_utils.h"
 
-struct ClapTrapTester : public ClapTrap{
-
-	ClapTrapTester(const std::string & name) : ClapTrap(name) {}
-
-	int getHitPoints() const{
-		return this->hitPoints;
-	}
-	int getEnergyPoints() const{
-		return this->energyPoints;
-	}
-	int getAttackDamage() const{
-		return this->attackDamage;
-	}
-	void setEnergyPoints(const int & in){
-		this->energyPoints = in;
-	}
-
-};
-
 TEST(test_clap_trap, init_variables_are_set_correctly){
-	ClapTrapTester c("epoisses");
+	ClapTrap c = getTestClapTrap("cantal");
 
 	ASSERT_EQ(10, c.getHitPoints());
 	ASSERT_EQ(10, c.getEnergyPoints());
@@ -28,7 +9,7 @@ TEST(test_clap_trap, init_variables_are_set_correctly){
 }
 
 TEST(test_clap_trap, ct_looses_one_energy_point_on_attack){
-	ClapTrapTester c("epoisses");
+	ClapTrap c = getTestClapTrap("fourme dalambert");
 	int energyPointsInit = c.getEnergyPoints();
 
 	c.attack("camembert");
@@ -37,7 +18,7 @@ TEST(test_clap_trap, ct_looses_one_energy_point_on_attack){
 }
 
 TEST(test_clap_trap, if_no_energy_left_cannot_attack){
-	ClapTrapTester c("epoisses");
+	ClapTrap c = getTestClapTrap("reblochon");
 	c.setEnergyPoints(0);
 
 	c.attack("camembert");
@@ -45,9 +26,27 @@ TEST(test_clap_trap, if_no_energy_left_cannot_attack){
 	ASSERT_EQ(0, c.getEnergyPoints());
 }
 
+TEST(test_clap_trap, negative_health_points_are_fixed_to_zero){
+	ClapTrap c = getTestClapTrap("reblochon");
+
+	c.takeDamage(c.getHitPoints() + 1);
+
+	ASSERT_EQ(0, c.getHitPoints());
+}
+
+TEST(test_clap_trap, cannot_attack_when_dead){
+	ClapTrap c = getTestClapTrap("reblochon");
+	int energyPointsInit = c.getEnergyPoints();
+	c.setHitPoints(0);
+
+	c.attack("tomme de chevre");
+
+	ASSERT_EQ(energyPointsInit, c.getEnergyPoints());
+}
+
 
 TEST(test_clap_trap, reparing_can_increase_hit_points_over_init){
-	ClapTrapTester c("epoisses");
+	ClapTrap c = getTestClapTrap("brillat-savarin");
 	int hitPointsInit = c.getHitPoints();
 
 	c.beRepaired(1);
@@ -56,7 +55,7 @@ TEST(test_clap_trap, reparing_can_increase_hit_points_over_init){
 }
 
 TEST(test_clap_trap, if_no_energy_left_cannot_repair){
-	ClapTrapTester c("epoisses");
+	ClapTrap c = getTestClapTrap("maroilles");
 	int hitPointsInit = c.getHitPoints();
 	c.setEnergyPoints(0);
 
