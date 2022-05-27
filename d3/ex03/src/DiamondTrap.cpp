@@ -1,28 +1,22 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(const std::string &name) \
-	: ClapTrap(name+"_clap_name", 100, 50, 30), \
-	ScavTrap(name), \
-	FragTrap(name), \
-	name(name){
-
+		: ClapTrap(), FragTrap(), ScavTrap() {
+	this->name = name;
+	this->ClapTrap::name = name + "_clap_name";
+	this->hitPoints = this->FragTrap::hitPoints;
+	this->energyPoints = this->ScavTrap::energyPoints;
+	this->attackDamage = this->FragTrap::attackDamage;
 	printConstructorMessage(name);
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) \
-	: ClapTrap(other.name+"_clap_name", 100, 50, 30), \
-	ScavTrap(other.name), \
-	FragTrap(other.name), \
-	name(other.name){
-
+DiamondTrap::DiamondTrap(const DiamondTrap &other){
+	*this = other;
 	printConstructorMessage(name);
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other){
-    this->hitPoints = other.hitPoints;
-    this->energyPoints = other.energyPoints;
-    this->attackDamage = other.attackDamage;
-    this->name = other.name;
+	this->ClapTrap::operator=(other);
     return *this;
 }
 

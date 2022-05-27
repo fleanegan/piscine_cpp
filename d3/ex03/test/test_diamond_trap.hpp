@@ -1,19 +1,19 @@
 #include "test_utils.h"
 
-TEST(testDiamondTrap, initVariablesAreSetCorrectly){
-	DiamondTrapTester c("epoisses");
+TEST(testDiamondTrap, initVariablesAreSetToScavTrapSinceItIsCalledAfterFragTrap){
+	DiamondTrap c = getTestDiamondTrap("epoisses");
 
 	ASSERT_EQ(100, c.getHitPoints());
 	ASSERT_EQ(50, c.getEnergyPoints());
-	ASSERT_EQ(30, c.getAttackDamage());
+	ASSERT_EQ(20, c.getAttackDamage());
 }
 
 TEST(testDiamondTrap, attackingDoesNotRequireAnOpponentObject){
-	DiamondTrapTester c("beaufort");
+	DiamondTrap c = getTestDiamondTrap("beaufort");
 	c.attack("emmental");
 }
 
 TEST(testDiamondTrap, repairScavTrap){
-	DiamondTrapTester c("mimolette");
+	DiamondTrap c = getTestDiamondTrap("mimolette");
 	c.beRepaired(34);
 }

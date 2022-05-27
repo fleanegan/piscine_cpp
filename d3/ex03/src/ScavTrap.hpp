@@ -6,11 +6,16 @@
 #define EX01_SCAVTRAP_HPP
 
 #include "ClapTrap.h"
+#define SCAV_TRAP_DEFAULT_HIT_POINTS 100
+#define SCAV_TRAP_DEFAULT_ENERGY_POINTS 50
+#define SCAV_TRAP_DEFAULT_ATTACK_POINTS 20
 
 class ScavTrap : virtual public ClapTrap{
 private:
 	void printPersonalizedConstructorMessage() const;
+	void printGenericConstructorMessage() const;
 protected:
+	ScavTrap();
 	void printUnsuccessfullAttackMessage() const override;
 	void printSuccessfullAttackMessage(const std::string &target) const override;
 	void printPersonalizedDestructorMessage() const override;

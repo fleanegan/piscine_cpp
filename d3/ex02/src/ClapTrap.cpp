@@ -4,25 +4,47 @@
 
 #include "ClapTrap.h"
 
-
-ClapTrap::ClapTrap(const std::string &name) : isBaseClass(false), name(name), hitPoints(10), energyPoints(10), attackDamage(0){
-	printPersonalizedConstructorMessage();
-}
-
-ClapTrap::ClapTrap(const std::string &name, const int &hitPoints, const int &energyPoints, const int &attackDamage)
-		: isBaseClass(true), name(name), hitPoints(hitPoints), energyPoints(energyPoints), attackDamage(attackDamage){
+ClapTrap::ClapTrap() : \
+		isBaseClass(true), \
+		name(""), \
+		hitPoints(CLAP_TRAP_DEFAULT_HIT_POINTS), \
+		energyPoints(CLAP_TRAP_DEFAULT_ENERGY_POINTS), \
+		attackDamage(CLAP_TRAP_DEFAULT_ATTACK_POINTS) {
 	printGenericConstructorMessage();
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other) {
-	(void) other;
+ClapTrap::ClapTrap(const std::string &name) : \
+		isBaseClass(false), \
+		name(name), \
+		hitPoints(CLAP_TRAP_DEFAULT_HIT_POINTS), \
+		energyPoints(CLAP_TRAP_DEFAULT_ENERGY_POINTS), \
+		attackDamage(CLAP_TRAP_DEFAULT_ATTACK_POINTS){
+	printPersonalizedConstructorMessage();
+}
+
+ClapTrap::ClapTrap(const std::string &name, const int &hitPoints, const int &energyPoints, const int &attackDamage) : \
+		isBaseClass(true), \
+		name(name), \
+		hitPoints(hitPoints), \
+		energyPoints(energyPoints), \
+		attackDamage(attackDamage){
+	printGenericConstructorMessage();
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other){
+	*this = other;
+	if (isBaseClass)
+		printGenericConstructorMessage();
+	else
+		printPersonalizedConstructorMessage();
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other){
-	this->hitPoints = other.hitPoints;
-	this->energyPoints = other.energyPoints;
-	this->attackDamage = other.attackDamage;
-	this->name = other.name;
+	isBaseClass = other.isBaseClass;
+	name = other.name;
+	hitPoints = other.hitPoints;
+	energyPoints = other.energyPoints;
+	attackDamage = other.attackDamage;
 	return (*this);
 }
 
@@ -31,7 +53,6 @@ ClapTrap::~ClapTrap() {
 		printGenericDestructorMessage();
 	else
 		printPersonalizedDestructorMessage();
-
 }
 
 void ClapTrap::attack(const std::string &target) {
@@ -46,6 +67,10 @@ void ClapTrap::attack(const std::string &target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
+	if (amount < hitPoints)
+		hitPoints -= amount;
+	else
+		hitPoints = 0;
 	printDamageMessage(amount);
 }
 
@@ -66,7 +91,7 @@ void ClapTrap::printSuccessfulRepairMessage(unsigned int amount) const {
 }
 
 void ClapTrap::printUnsuccessfulRepairMessage() const {
-	std::cout << "oi mate! cannot repair stuff without energy left. buy some kong strong" << std::endl;
+	std::cout << "oi mate! cannot repair stuff without energy and hit points left. buy some kong strong" << std::endl;
 }
 
 void ClapTrap::printPersonalizedConstructorMessage() const {
@@ -96,5 +121,37 @@ void ClapTrap::printGenericConstructorMessage() const {
 void ClapTrap::printGenericDestructorMessage() {
 	std::cout << "ClapTrap was used as base class and is now destroyed" << std::endl;
 
+}
+
+const std::string &ClapTrap::getName() const {
+	return name;
+}
+
+void ClapTrap::setName(const std::string &name) {
+	this->name = name;
+}
+
+unsigned int ClapTrap::getHitPoints() const {
+	return hitPoints;
+}
+
+void ClapTrap::setHitPoints(unsigned int hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
+unsigned int ClapTrap::getEnergyPoints() const {
+	return energyPoints;
+}
+
+void ClapTrap::setEnergyPoints(unsigned int energyPoints) {
+	this->energyPoints = energyPoints;
+}
+
+unsigned int ClapTrap::getAttackDamage() const {
+	return attackDamage;
+}
+
+void ClapTrap::setAttackDamage(unsigned int attackDamage) {
+	this->attackDamage = attackDamage;
 }
 

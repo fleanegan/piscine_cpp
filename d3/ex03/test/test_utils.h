@@ -8,112 +8,36 @@
 #include "../src/DiamondTrap.hpp"
 #include <iostream>
 
+DiamondTrap getTestDiamondTrap(const std::string &name) {
+	DiamondTrap a(name);
+	DiamondTrap b(a);
+	a = b;
+	std::cout << "constructed test object: Done" << std::endl;
+	return (a);
+}
 
-struct ClapTrapTester : public ClapTrap{
+ScavTrap getTestScavTrap(const std::string &name) {
+	ScavTrap a(name);
+	ScavTrap b(a);
+	a = b;
+	std::cout << "constructed test object: Done" << std::endl;
+	return (a);
+}
 
-	ClapTrapTester(const std::string & name) : ClapTrap(name){}
+FragTrap getTestFragTrap(const std::string &name) {
+	FragTrap a(name);
+	FragTrap b(a);
+	a = b;
+	std::cout << "constructed test object: Done" << std::endl;
+	return (a);
+}
 
-	int getHitPoints() const{
-		return this->hitPoints;
-	}
-	int getEnergyPoints() const{
-		return this->energyPoints;
-	}
-	int getAttackDamage() const{
-		return this->attackDamage;
-	}
-	void setEnergyPoints(const int & in){
-		this->energyPoints = in;
-	}
-
-protected:
-	void printUnsuccessfullAttackMessage() const override {}
-	void printSuccessfullAttackMessage(const std::string &target) const override {}
-	void printDamageMessage(unsigned int amount) const override {}
-	void printUnsuccessfulRepairMessage() const override {}
-	void printSuccessfulRepairMessage(unsigned int amount) const override {}
-private:
-	void printPersonalizedConstructorMessage() const {}
-	void printPersonalizedDestructorMessage() const {}
-};
-
-struct ScavTrapTester : public ScavTrap {
-	ScavTrapTester(const std::string & name) : ScavTrap(name), ClapTrap(name, 100, 50, 20){}
-
-	int getHitPoints() const{
-		return this->hitPoints;
-	}
-	int getEnergyPoints() const{
-		return this->energyPoints;
-	}
-	int getAttackDamage() const{
-		return this->attackDamage;
-	}
-	void setEnergyPoints(const int & in){
-		this->energyPoints = in;
-	}
-protected:
-	void printUnsuccessfullAttackMessage() const override {}
-	void printSuccessfullAttackMessage(const std::string &target) const override {}
-	void printDamageMessage(unsigned int amount) const override {}
-	void printUnsuccessfulRepairMessage() const override {}
-	void printSuccessfulRepairMessage(unsigned int amount) const override {}
-private:
-	void printPersonalizedConstructorMessage() const {}
-	void printPersonalizedDestructorMessage() const {}
-};
-
-struct FragTrapTester : public FragTrap {
-	FragTrapTester(const std::string & name) : FragTrap(name), ClapTrap(name, 100, 100, 30){}
-
-	int getHitPoints() const{
-		return this->hitPoints;
-	}
-	int getEnergyPoints() const{
-		return this->energyPoints;
-	}
-	int getAttackDamage() const{
-		return this->attackDamage;
-	}
-	void setEnergyPoints(const int & in){
-		this->energyPoints = in;
-	}
-protected:
-	void printUnsuccessfullAttackMessage() const override {}
-	void printSuccessfullAttackMessage(const std::string &target) const override {}
-	void printDamageMessage(unsigned int amount) const override {}
-	void printUnsuccessfulRepairMessage() const override {}
-	void printSuccessfulRepairMessage(unsigned int amount) const override {}
-private:
-	void printPersonalizedConstructorMessage() const {}
-	void printPersonalizedDestructorMessage() const {}
-};
-
-struct DiamondTrapTester : public DiamondTrap{
-	DiamondTrapTester(const std::string & name) : DiamondTrap(name), ClapTrap(name+"_clap_name", 100, 50, 30){}
-
-	int getHitPoints() const{
-		return this->hitPoints;
-	}
-	int getEnergyPoints() const{
-		return this->energyPoints;
-	}
-	int getAttackDamage() const{
-		return this->attackDamage;
-	}
-	void setEnergyPoints(const int & in){
-		this->energyPoints = in;
-	}
-protected:
-	void printUnsuccessfullAttackMessage() const override {}
-	void printSuccessfullAttackMessage(const std::string &target) const override {}
-	void printDamageMessage(unsigned int amount) const override {}
-	void printUnsuccessfulRepairMessage() const override {}
-	void printSuccessfulRepairMessage(unsigned int amount) const override {}
-private:
-	void printPersonalizedConstructorMessage() const {}
-	void printPersonalizedDestructorMessage() const {}
-};
-
+ClapTrap getTestClapTrap(const std::string &name) {
+	ClapTrap a(name);
+	ClapTrap b(a);
+	a = b;
+	std::cout << "constructed test object: Done" << std::endl;
+	return (a);
+}
 
 #endif	 // TEST_UTILS_H

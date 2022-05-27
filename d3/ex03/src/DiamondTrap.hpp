@@ -3,7 +3,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : protected ScavTrap, protected FragTrap{
+class DiamondTrap : public FragTrap, public ScavTrap{
 private:
 	std::string name;
 public:

@@ -1,16 +1,10 @@
 #ifndef TESTING
 
 #include "DiamondTrap.hpp"
-#include <iostream>
+
 int main( void ) {
 	DiamondTrap a("Diamond");
-	a.attack("brie");
-	a.whoAmI();
-
-	DiamondTrap b = a;
-	b.beRepaired(10);
-	b = a;
-	b.beRepaired(10);
+	std::cout << "Claptrap constructor " << a.getHitPoints() << " " << a.getAttackDamage() << " " << a.getEnergyPoints() << std::endl;
 	return 0;
 }
 

@@ -1,7 +1,7 @@
 #include "test_utils.h"
 
 TEST(testFragTrap, initVariablesAreSetCorrectly){
-FragTrapTester c("Geramont");
+FragTrap c = getTestFragTrap("Geramont");
 
 ASSERT_EQ(100, c.getHitPoints());
 ASSERT_EQ(100, c.getEnergyPoints());
@@ -9,11 +9,11 @@ ASSERT_EQ(30, c.getAttackDamage());
 }
 
 TEST(testFragTrap, attacking){
-	FragTrap c("Caprice des dieux");
+	FragTrap c = getTestFragTrap("Caprice des dieux");
 	c.attack("Vachequirit");
 }
 
 TEST(testFragTrap, highFive){
-	FragTrap c("Buche de chevre");
+	FragTrap c = getTestFragTrap("Buche de chevre");
 	c.highFivesGuys();
 }
