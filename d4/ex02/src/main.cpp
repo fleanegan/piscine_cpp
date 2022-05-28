@@ -69,6 +69,8 @@ void createAnimalArray(int animalCount, Animal **arr) {
 		else
 			arr[i] = new Dog;
 	}
+	//this would be illegal
+	//Animal a;
 }
 
 #endif

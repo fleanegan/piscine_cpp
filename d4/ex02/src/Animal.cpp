@@ -23,10 +23,6 @@ Animal::~Animal() {
 	DEBUG_FLAG && std::cout << "Animal destructor" << std::endl;
 }
 
-void Animal::makeSound() const {
-	std::cout << "Generic animal sound" << std::endl;
-}
-
 const std::string &Animal::getType() const {
 	return type;
 }
