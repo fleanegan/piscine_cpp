@@ -1,4 +1,4 @@
-NAME = Animal
+NAME = Materia
 
 # Paths
 
@@ -12,6 +12,7 @@ SRC_NAME =	main.cpp\
 			AMateria.cpp\
 			Character.cpp\
 			Cure.cpp\
+#			MateriaSource.cpp\
 			#Ice.cpp\
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)

@@ -9,8 +9,8 @@ Cure::Cure() : \
 }
 
 Cure::Cure(const Cure &other) : \
-	AMateria(other.getType()){
-
+	AMateria("cure"){
+	(void) other;
 }
 
 //todo: is there really nothing to copy?
@@ -20,7 +20,7 @@ Cure &Cure::operator=(const Cure &other) {
 }
 
 Cure::~Cure() {
-
+std::cout<< "cure destroyed \n\n";
 }
 
 AMateria *Cure::clone() const {
@@ -28,5 +28,5 @@ AMateria *Cure::clone() const {
 }
 
 void Cure::use(ICharacter &target) {
-	(void) target;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
