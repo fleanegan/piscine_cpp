@@ -19,7 +19,7 @@ int main( void ) {
 	meta->makeSound();
 
 	std::cout << "'''''''''''''''''''''''WrongAnimal'''''''''''''''''''''''" << std::endl;
-	WrongCat a;
+	WrongAnimal a = WrongCat();
 	a.makeSound();
 	delete meta;
 	delete i;

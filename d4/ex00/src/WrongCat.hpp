@@ -5,9 +5,9 @@
 #ifndef EX00_WRONG_CAT_HPP
 #define EX00_WRONG_CAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class WrongCat : public Animal{
+class WrongCat : public WrongAnimal{
 public:
 	WrongCat();
 	WrongCat(const WrongCat &other);
