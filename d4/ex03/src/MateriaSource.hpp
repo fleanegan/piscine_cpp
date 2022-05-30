@@ -6,12 +6,16 @@
 #define EX03_MATERIASOURCE_HPP
 
 #include "IMaterialSource.hpp"
+#include "Inventory.hpp"
+#include <iostream>
 
 class MateriaSource : public IMateriaSource{
+private:
+	Inventory inventory;
 public:
 	MateriaSource();
-	MateriaSource(const MateriaSource &other);
-	MateriaSource &operator=(const MateriaSource &other);
+	MateriaSource(MateriaSource &other);
+	MateriaSource &operator=(MateriaSource &other);
 	virtual ~MateriaSource();
 
 	virtual void learnMateria(AMateria *materia);

@@ -12,8 +12,9 @@ SRC_NAME =	main.cpp\
 			AMateria.cpp\
 			Character.cpp\
 			Cure.cpp\
-#			MateriaSource.cpp\
-			#Ice.cpp\
+			Ice.cpp\
+			Inventory.cpp\
+			MateriaSource.cpp\
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 

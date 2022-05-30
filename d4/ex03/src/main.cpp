@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Character.hpp"
 #include "Cure.hpp"
+#include "Ice.hpp"
+#include "MateriaSource.hpp"
 
 ICharacter *generateTestCharacter(const std::string &name){
 	Character i(name);
@@ -14,8 +16,8 @@ int	main(){
 	ICharacter *me = generateTestCharacter("Gorgonzola");
 	Character you("Parmeggiano");
 	std::cout << "name " << me->getName() << std::endl;
-	Cure *c = new Cure();
-	Cure *c1 = new Cure();
+	AMateria *c = new Cure();
+	AMateria *c1 = new Ice();
 	me->equip(c);
 	me->equip(c);
 	me->equip(c);
@@ -31,5 +33,11 @@ int	main(){
 	me->use(0, *me);
 	std::cout << " me name :" << me->getName() << std::endl;
 	delete me;
+	MateriaSource m;
+	m.createMateria("cure");
+	m.learnMateria(new Cure());
+	AMateria *c2 = m.createMateria("cure");
+	you.equip(c2);
+	you.use(1, you);
 	return 0;
 }

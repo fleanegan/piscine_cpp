@@ -3,7 +3,6 @@
 
 #include "ICharacter.hpp"
 
-//todo: wtf do we need this
 class ICharacter;
 
 class AMateria

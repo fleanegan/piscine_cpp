@@ -6,15 +6,17 @@
 
 Cure::Cure() : \
 	AMateria("cure"){
+	std::cout<< "Cure constructor" << std::endl;
 }
 
 Cure::Cure(const Cure &other) : \
 	AMateria("cure"){
+	std::cout<< "Cure copy constructor" << std::endl;
 	(void) other;
 }
 
-//todo: is there really nothing to copy?
 Cure &Cure::operator=(const Cure &other) {
+	std::cout<< "Cure assignment" << std::endl;
 	(void) other;
 	return *this;
 }
