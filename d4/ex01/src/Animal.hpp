@@ -8,7 +8,7 @@
 #include <string>
 #include <iostream>
 #define override
-#define DEBUG_FLAG 0
+#define DEBUG_FLAG 1
 
 class Animal {
 protected:

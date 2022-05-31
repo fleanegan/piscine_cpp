@@ -22,7 +22,7 @@ public:
 	bool isMateriaAlreadyPresent(AMateria *pMateria);
 	bool isIndexValid(int idx) const;
 	AMateria *getMateriaByIndex(int i);
-	void deleteMateriaByIndex(int i);
+	void removeMateriaByIndex(int i);
 	AMateria * getMateriaByType(const std::string &basicString);
 };
 

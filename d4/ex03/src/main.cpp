@@ -18,12 +18,13 @@ int	main(){
 	std::cout << "name " << me->getName() << std::endl;
 	AMateria *c = new Cure();
 	AMateria *c1 = new Ice();
-	me->equip(c);
-	me->equip(c);
-	me->equip(c);
-	me->equip(c);
-	me->unequip(2);
-	me->unequip(0);
+	me->equip(c); // should add
+	me->equip(c); // should not add again
+	me->equip(c); // should not add again
+	me->equip(c); // should not add again
+	me->unequip(2); // out of range, does not do anything
+	me->unequip(0); // removes c from inventory but does not delete its
+	delete c;	// since we are not allowed to delete in unequip
 	c = new Cure();
 	me->equip(c);
 	me->unequip(42);

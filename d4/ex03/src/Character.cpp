@@ -48,7 +48,7 @@ void Character::equip(AMateria *m) {
 void Character::unequip(int idx) {
 	try{
 		//fixme: to not do this !
-		inventory.deleteMateriaByIndex(idx);
+		inventory.removeMateriaByIndex(idx);
 		std::cout << name << ": " << "throwing " << inventory.getMateriaByIndex(idx)->getType() << " from slot " << idx << " on the floor" << std::endl;
 	}
 	catch (const std::exception &exception) {

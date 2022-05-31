@@ -25,5 +25,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-	std::cout << "~bark" << std::endl;
+	std::cout << "I like moutarde with my Cantal" << std::endl;
 }

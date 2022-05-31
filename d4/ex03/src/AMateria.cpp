@@ -20,3 +20,12 @@ AMateria::AMateria() {
 AMateria::~AMateria() {
 
 }
+
+AMateria::AMateria(const AMateria &other) {
+	(void) other;
+}
+
+AMateria &AMateria::operator=(const AMateria &other){
+	(void) other;
+	return *this;
+}

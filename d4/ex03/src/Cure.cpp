@@ -22,7 +22,7 @@ Cure &Cure::operator=(const Cure &other) {
 }
 
 Cure::~Cure() {
-std::cout<< "cure destroyed \n\n";
+	std::cout<< "Cure destroyed \n\n";
 }
 
 AMateria *Cure::clone() const {

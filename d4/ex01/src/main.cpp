@@ -48,6 +48,12 @@ int main( void ) {
 	std::cout << "c says:" << std::endl;
 	c.makeSound();
 	std::cout << "_________________________________" << std::endl;
+	std::cout << "Animal thinking" << std::endl;
+	Animal	*e = new Cat();
+	(*(Cat *) e).think("eeeeeeeeh");
+	e->makeSound();
+	delete e;
+	std::cout << "_________________________________" << std::endl;
 	std::cout << "mixed array" << std::endl;
 	int	animalCount = 5;
 	Animal *arr[animalCount];

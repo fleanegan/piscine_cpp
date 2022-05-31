@@ -17,10 +17,16 @@ int main( void ) {
 	j->makeSound();
 	std::cout << "var j is of type: " << j->getType() << std::endl;
 	meta->makeSound();
-
+	Animal *p = new Cat();
+	Animal *q = new Dog();
+	delete p;
+	p = q;
+	p->makeSound();
+	delete p;
 	std::cout << "'''''''''''''''''''''''WrongAnimal'''''''''''''''''''''''" << std::endl;
 	WrongAnimal a = WrongCat();
 	a.makeSound();
+
 	delete meta;
 	delete i;
 	delete j;

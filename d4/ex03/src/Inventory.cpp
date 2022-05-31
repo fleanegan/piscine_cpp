@@ -87,12 +87,11 @@ AMateria *Inventory::getMateriaByIndex(int i){
 	throw std::exception();
 }
 
-void Inventory::deleteMateriaByIndex(int i){
-	AMateria *toBeDeleted;
+void Inventory::removeMateriaByIndex(int i){
+	AMateria *toBeRemoved;
 
 	try {
-		toBeDeleted = getMateriaByIndex(i);
-		delete container[i];
+		toBeRemoved = getMateriaByIndex(i);
 		container[i] = NULL;
 	}
 	catch (const std::exception &e){
