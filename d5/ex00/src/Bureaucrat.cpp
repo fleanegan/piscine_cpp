@@ -8,10 +8,10 @@
 Bureaucrat::Bureaucrat(const std::string &name, short initGrade) :\
 		name(name), grade(initGrade){
 	std::cout << "Bureaucrat constructor, init grade: " << initGrade << ", name: " << name << std::endl;
-	if (initGrade > MAX_GRADE)
-		throw GradeTooLowException();
-	if (initGrade < MIN_GRADE)
+	if (initGrade < MAX_GRADE)
 		throw GradeTooHighException();
+	if (initGrade > MIN_GRADE)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) :\
@@ -37,4 +37,21 @@ std::string Bureaucrat::getName() const{
 
 short Bureaucrat::getGrade() const {
 	return grade;
+}
+
+void Bureaucrat::decrementGrade() {
+	if (grade == MAX_GRADE)
+		throw GradeTooHighException();
+	--grade;
+}
+
+void Bureaucrat::incrementGrade() {
+	if (grade == MIN_GRADE)
+		throw GradeTooLowException();
+	++grade;
+}
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	return os;
 }
