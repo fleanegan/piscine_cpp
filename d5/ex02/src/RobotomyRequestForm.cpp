@@ -7,19 +7,19 @@
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : \
 		Form("RobotomyRequestForm", ROBOTOMY_SIGN, ROBOTOMY_EXECUTE), \
 		target(target){
-	std::cout << "Shrubbery constructor" << std::endl;
+	std::cout << "Robotomy constructor" << std::endl;
 	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) :\
 		Form("RobotomyRequestForm", ROBOTOMY_SIGN, ROBOTOMY_EXECUTE), \
 		target(other.target){
-	std::cout << "Shrubbery copy constructor" << std::endl;
+	std::cout << "Robotomy copy constructor" << std::endl;
 	srand(time(NULL));
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
-	std::cout << "Shrubbery destructor" << std::endl;
+	std::cout << "Robotomy destructor" << std::endl;
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const {
