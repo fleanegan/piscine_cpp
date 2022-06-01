@@ -63,7 +63,7 @@ bool Bureaucrat::signForm(Form &form) {
 	}
 }
 
-bool Bureaucrat::executeForm(const Form &form) {
+bool Bureaucrat::executeForm(const Form &form) const {
 	try {
 		form.execute(*this);
 		return true;

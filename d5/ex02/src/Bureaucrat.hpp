@@ -30,7 +30,7 @@ public:
 	std::string getName() const;
 	short getGrade() const;
 	bool signForm(Form &form);
-	bool executeForm(Form const & form);
+	bool executeForm(Form const & form) const;
 };
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
