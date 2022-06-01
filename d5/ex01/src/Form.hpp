@@ -15,10 +15,11 @@ private:
 	const short signGrade;
 	const short executeGrade;
 	bool isSigned;
+	
+	Form &operator=(const Form &);
 public:
 	Form(const std::string &name, const short signGrade, const short executeGrade);
 	Form(const Form &other);
-	Form &operator=(const Form &);
 	~Form();
 
 	const std::string &getName() const;
