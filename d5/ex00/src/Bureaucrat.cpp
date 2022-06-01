@@ -39,13 +39,13 @@ short Bureaucrat::getGrade() const {
 	return grade;
 }
 
-void Bureaucrat::decrementGrade() {
+void Bureaucrat::incrementGrade() {
 	if (grade == MAX_GRADE)
 		throw GradeTooHighException();
 	--grade;
 }
 
-void Bureaucrat::incrementGrade() {
+void Bureaucrat::decrementGrade() {
 	if (grade == MIN_GRADE)
 		throw GradeTooLowException();
 	++grade;

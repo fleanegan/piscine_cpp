@@ -43,9 +43,9 @@ TEST(bureaucrat, incremetingDegreeAndDecrementingGradeReturnsSame){
 	Bureaucrat jp("jp", 25);
 	EXPECT_EQ(25, jp.getGrade());
 
-	jp.decrementGrade();
-	EXPECT_EQ(24, jp.getGrade());
 	jp.incrementGrade();
+	EXPECT_EQ(24, jp.getGrade());
+	jp.decrementGrade();
 	EXPECT_EQ(25, jp.getGrade());
 }
 
@@ -53,7 +53,7 @@ TEST(bureaucrat, degrementingGradeOverMaxThrows){
 	Bureaucrat jp("jp", MAX_GRADE);
 
 	try {
-		jp.decrementGrade();
+		jp.incrementGrade();
 		FAIL() << "Expected Exception";
 	}
 	catch(GradeTooHighException const & err) {
@@ -69,7 +69,7 @@ TEST(bureaucrat, degrementingGradeUnderMinThrows){
 	Bureaucrat jp("jp", MIN_GRADE);
 
 	try {
-		jp.incrementGrade();
+		jp.decrementGrade();
 		FAIL() << "Expected Exception";
 	}
 		catch(GradeTooLowException const & err) {
