@@ -9,13 +9,15 @@
 #include <string>
 #include <iostream>
 
+class Bureaucrat;
+
 class Form {
 private:
 	const std::string name;
 	const short signGrade;
 	const short executeGrade;
 	bool isSigned;
-	
+
 	Form &operator=(const Form &);
 public:
 	Form(const std::string &name, const short signGrade, const short executeGrade);

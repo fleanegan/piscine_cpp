@@ -11,6 +11,10 @@
 #include <string>
 #include <ostream>
 #include "CustomExceptions.hpp"
+#include "Form.hpp"
+
+class Form;
+
 class Bureaucrat {
 private:
 	const std::string name;
@@ -25,6 +29,7 @@ public:
 	void incrementGrade();
 	std::string getName() const;
 	short getGrade() const;
+	bool signForm(Form &form);
 };
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 

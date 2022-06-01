@@ -80,9 +80,23 @@ TEST(bureaucrat, degrementingGradeUnderMinThrows){
 	}
 }
 
-
 TEST(bureaucrat, cout){
 	Bureaucrat jp("jp", 25);
 
 	std::cout << jp << std::endl;
+}
+
+TEST(bureaucrat, signFormSuccess){
+	Bureaucrat jp("jp", 25);
+	Form yi904i44("Tartiflette", 90, 90);
+
+	ASSERT_EQ(true, jp.signForm(yi904i44));
+}
+
+
+TEST(bureaucrat, signFormFailure){
+	Bureaucrat jp("jp", 25);
+	Form yi904i44("Hardie", 1, 90);
+
+	ASSERT_EQ(false, jp.signForm(yi904i44));
 }
