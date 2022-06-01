@@ -24,7 +24,8 @@ TEST(form, beSignedWithIncorrectGradeFails){
 	Form a325fjw("formWithHighGrade", 25, 25);
 	Bureaucrat herrMueller("Thorsten", 148);
 
-	ASSERT_EQ(false, a325fjw.beSigned(herrMueller));
+	ASSERT_ANY_THROW(a325fjw.beSigned(herrMueller));
+	ASSERT_EQ(false, a325fjw.getIsSigned());
 }
 
 TEST(form, beSignedWithCorrectGradeFails){
@@ -32,4 +33,14 @@ TEST(form, beSignedWithCorrectGradeFails){
 	Bureaucrat herrMueller("Thorsten", 148);
 
 	ASSERT_EQ(true, a325fjw.beSigned(herrMueller));
+	ASSERT_EQ(true, a325fjw.getIsSigned());
+}
+
+TEST(form, signingSignedFormThrows){
+	Form a325fjw("formWithLowGrade", 150, 15);
+	Bureaucrat herrMueller("Thorsten", 148);
+
+	ASSERT_EQ(true, a325fjw.beSigned(herrMueller));
+	ASSERT_EQ(true, a325fjw.getIsSigned());
+	ASSERT_ANY_THROW(a325fjw.beSigned(herrMueller));
 }

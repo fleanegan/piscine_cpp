@@ -50,14 +50,18 @@ bool Form::getIsSigned() const {
 	return isSigned;
 }
 
-bool Form::beSigned(const Bureaucrat &bureaucrat) const {
-	if (bureaucrat.getGrade() > signGrade)
-	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << name << " because he is not responsible for this kind of problems";
-		return false;
-	}
+bool Form::beSigned(const Bureaucrat &bureaucrat)  {
+	guardSignature(bureaucrat);
 	std::cout << bureaucrat.getName() << " signed " << name;
+	isSigned = true;
 	return true;
+}
+
+void Form::guardSignature(const Bureaucrat &bureaucrat) const {
+	if (isSigned)
+		throw AlreadySignedException();
+	if (bureaucrat.getGrade() > signGrade)
+		throw GradeTooLowException();
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {

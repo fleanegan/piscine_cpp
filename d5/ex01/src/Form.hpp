@@ -28,7 +28,8 @@ public:
 	short getSignGrade() const;
 	short getExecuteGrade() const;
 	bool getIsSigned() const;
-	bool beSigned(const Bureaucrat &bureaucrat) const;
+	bool beSigned(const Bureaucrat &bureaucrat);
+	void guardSignature(const Bureaucrat &bureaucrat) const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &form);

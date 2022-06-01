@@ -19,7 +19,10 @@ public:
 public:
 };
 
-
-
+class AlreadySignedException : public std::exception{
+public:
+	const char *what() const throw();
+public:
+};
 
 #endif //EX00_CUSTOMEXCEPTIONS_HPP

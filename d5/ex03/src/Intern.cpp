@@ -5,20 +5,22 @@
 #include "Intern.hpp"
 
 Intern::Intern() {
-
+	std::cout << "Intern constructor" << std::endl;
 }
 
 Intern::Intern(const Intern &other) {
+	std::cout << "Intern copy constructor" << std::endl;
 	(void) other;
 }
 
 Intern &Intern::operator=(const Intern &other) {
 	(void) other;
+	std::cout << "Intern assignment" << std::endl;
 	return *this;
 }
 
 Intern::~Intern() {
-
+	std::cout << "Intern destructor" << std::endl;
 }
 #define NUMBER_OF_KNOWN_FORMS 4
 
