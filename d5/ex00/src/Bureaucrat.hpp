@@ -15,10 +15,10 @@ class Bureaucrat {
 private:
 	const std::string name;
 	short grade;
+	Bureaucrat &operator=(const Bureaucrat &);
 public:
 	Bureaucrat(const std::string &name, short initGrade);
 	Bureaucrat(const Bureaucrat &other);
-	Bureaucrat &operator=(const Bureaucrat &);
 	~Bureaucrat();
 
 	void decrementGrade();
