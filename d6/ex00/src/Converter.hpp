@@ -6,24 +6,33 @@
 #define EX00_CONVERTER_HPP
 
 #include <string>
+#include <ostream>
 
 class Converter {
 private:
-	const long double value;
-	char *endPtr;
+	double value;
+	bool isValidInput;
 
 	Converter(const Converter &other);
 	Converter &operator=(const Converter &);
-	std::string &decorateResultWithTrailingFloatF(std::string &result) const ;
-	bool isValidInput() const;
+	bool canStoreInputInDouble(const char *input);
+	template<typename T>
+	bool isUnderflow() const;
+	static std::string &decorateResultWithTrailingDotZero(std::string &result, double value);
+	template<typename T>
+	static std::string &formatString(double input, std::string &result);
+
 public:
 	Converter(const char *input);
 	~Converter();
 	std::string interpretAsInt() const;
 	std::string interpretAsChar() const;
-	static std::string doubleToString(double input) ;
+	template<typename T>
+	static std::string toString(double input) ;
 	std::string interpretAsDouble() const;
 	std::string interpretAsFloat() const;
 };
+
+std::ostream &operator<<(std::ostream &os, const Converter &converter);
 
 #endif //EX00_CONVERTER_HPP

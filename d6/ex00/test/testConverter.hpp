@@ -1,3 +1,4 @@
+#include <cmath>
 #include "test_utils.h"
 
 TEST(converter, printInt){
@@ -47,7 +48,7 @@ TEST(converter, printInputAsUnprintableChar){
 	Converter converter("0");
 
 	std::string output = converter.interpretAsChar();
-	ASSERT_STREQ("undisplayable", output.c_str());
+	ASSERT_STREQ("not printable", output.c_str());
 }
 
 TEST(converter, printDoubleTooBigForFloatAsFloat){
@@ -108,10 +109,22 @@ TEST(converter, floatOutputsWithATrailingFNan){
 	ASSERT_STREQ("nanf", output.c_str());
 }
 
+TEST(converter, nan){
+	Converter converter("nan");
+
+	std::string output = converter.interpretAsFloat();
+	ASSERT_STREQ("nanf", output.c_str());
+}
+
+TEST(converter, plusSignInf){
+	Converter converter("+inf");
+
+	std::string output = converter.interpretAsFloat();
+	ASSERT_STREQ("inff", output.c_str());
+}
+
 TEST(converter, doubleCheckLowerBound){
-	std::string s = std::to_string(2. * DBL_MAX);
-	long double tmp = std::strtold(s.c_str(), NULL);
-	s = std::to_string(tmp);
+	std::string s = "-279769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368";
 	Converter converter(s.c_str());
 
 	std::string output = converter.interpretAsDouble();
@@ -119,9 +132,7 @@ TEST(converter, doubleCheckLowerBound){
 }
 
 TEST(converter, doubleCheckUpperBound){
-	std::string s = std::to_string(2. * DBL_MAX);
-	long double tmp = std::strtold(s.c_str(), NULL);
-	s = std::to_string(tmp);
+	std::string s = "279769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000";
 	Converter converter(s.c_str());
 
 	std::string output = converter.interpretAsDouble();
