@@ -31,6 +31,7 @@ public:
 	static std::string toString(double input) ;
 	std::string interpretAsDouble() const;
 	std::string interpretAsFloat() const;
+	void removeLastFInInputIfValid(std::string &tmp) const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Converter &converter);

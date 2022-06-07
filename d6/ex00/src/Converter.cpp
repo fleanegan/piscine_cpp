@@ -20,16 +20,18 @@ Converter::Converter(const char *input) : \
 
 bool Converter::canStoreInputInDouble(const char *input) {
 	char *endPtr;
+	std::string tmp(input);
 
-	if (std::string(input).length() == 1 && std::isalpha(input[0]))
+	if (tmp.length() == 1 && std::isalpha(tmp.c_str()[0]))
 	{
-		value = static_cast<double>(input[0]);
+		value = static_cast<double>(tmp.c_str()[0]);
 		return true;
 	}
 	else
 	{
+		removeLastFInInputIfValid(tmp);
 		errno = 0;
-		value = strtod(input, &endPtr);
+		value = strtod(tmp.c_str(), &endPtr);
 	}
 	return errno == 0 && *endPtr == 0;
 }
@@ -110,4 +112,9 @@ std::ostream &operator<<(std::ostream &os, const Converter &converter) {
 	"float: " << converter.interpretAsFloat() << std::endl << \
 	"double: " << converter.interpretAsDouble() << std::endl;
 	return os;
+}
+
+void Converter::removeLastFInInputIfValid(std::string &tmp) const {
+	if (tmp.at(tmp.length() - 1) == 'f' && tmp != "inf" && tmp != "-inf" && tmp != "+inf")
+		tmp.at(tmp.length() - 1) = '\0';
 }
