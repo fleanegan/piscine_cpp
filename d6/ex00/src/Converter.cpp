@@ -14,6 +14,8 @@
 
 Converter::Converter(const char *input) : \
 		isValidInput(canStoreInputInDouble(input)){
+	if (! isValidInput)
+		std::cerr << "warning, the input is not valid" << std::endl;
 }
 
 bool Converter::canStoreInputInDouble(const char *input) {
@@ -43,7 +45,7 @@ bool Converter::isUnderflow() const {
 			return true;
 		return false;
 	}
-	else if (((fabs(value) > std::numeric_limits<T>::max()) && !isinf(value)) || !isValidInput)
+	else if ((fabs(value) > std::numeric_limits<T>::max()) && !isinf(value))
 		return true;
 	return false;
 }
@@ -51,7 +53,7 @@ bool Converter::isUnderflow() const {
 std::string Converter::interpretAsChar() const {
 	char candidate = static_cast<char>(value);
 
-	if (isUnderflow<char>())
+	if (isUnderflow<char>() || ! isValidInput)
 		return "impossible";
 	if (std::isprint(candidate))
 		return std::string(1, candidate);
@@ -59,19 +61,19 @@ std::string Converter::interpretAsChar() const {
 }
 
 std::string Converter::interpretAsInt() const {
-	if (isUnderflow<int>())
+	if (isUnderflow<int>() || ! isValidInput)
 		return "impossible";
 	return toString<int>(value);
 }
 
 std::string Converter::interpretAsDouble() const {
-	if (isUnderflow<double>())
+	if (isUnderflow<double>() || ! isValidInput)
 		return "impossible";
 	return toString<double>(value);
 }
 
 std::string Converter::interpretAsFloat() const {
-	if (isUnderflow<float>())
+	if (isUnderflow<float>() || ! isValidInput)
 		return "impossible";
 	return toString<float>(value);
 }
