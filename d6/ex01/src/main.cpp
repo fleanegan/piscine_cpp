@@ -20,6 +20,7 @@ int main(){
 	uintptr_t serAddr = serialize(test);
 	Data *deSerAddr = deserialize(serAddr);
 	std::cout << "orig: " << test << ", as ptr: " << serAddr << " deserialized: " << deSerAddr << std::endl;
+	std::cout << "0: " << test->arr[0] << " 1: " << test->arr[1] << " 2: " << test->arr[2] << std::endl;
 }
 
 #endif
