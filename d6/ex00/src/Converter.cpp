@@ -63,7 +63,7 @@ std::string Converter::interpretAsChar() const {
 }
 
 std::string Converter::interpretAsInt() const {
-	if (isUnderflow<int>() || ! isValidInput)
+	if (isUnderflow<int>() || ! isValidInput || isnan(value))
 		return "impossible";
 	return toString<int>(value);
 }
@@ -115,6 +115,6 @@ std::ostream &operator<<(std::ostream &os, const Converter &converter) {
 }
 
 void Converter::removeLastFInInputIfValid(std::string &tmp) const {
-	if (tmp.at(tmp.length() - 1) == 'f' && tmp != "inf" && tmp != "-inf" && tmp != "+inf")
+	if (tmp.at(tmp.length() - 1) == 'f' && tmp != "inf" && tmp != "-inf" && tmp != "+inf" && tmp != "nan")
 		tmp.at(tmp.length() - 1) = '\0';
 }
