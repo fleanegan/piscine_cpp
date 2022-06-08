@@ -11,7 +11,7 @@
 Span::Span(unsigned int maxCapacity) : \
         maxCapacity(maxCapacity), \
         currentIndex(0), \
-		container(maxCapacity){
+		container(){
 
 }
 
@@ -35,7 +35,8 @@ Span::~Span() {
 void Span::addNumber(int newNumber) {
 	if (static_cast<int>(maxCapacity - currentIndex) <= 0)
 		throw std::out_of_range("the Span is full!");
-	container[currentIndex++] = newNumber;
+	container.push_back(newNumber);
+	currentIndex++;
 }
 
 int Span::shortestSpan()  {
@@ -69,8 +70,6 @@ void Span::addRange(std::vector<int>::iterator beg, std::vector<int>::iterator e
 
 	if (additionalElements > (maxCapacity - currentIndex))
 		throw std::out_of_range("the Span is full!");
-	while (beg != end){
-		addNumber(*beg);
-		beg++;
-	}
+	container.insert( container.end(), beg, end);
+	currentIndex += additionalElements;
 }
