@@ -1,3 +1,4 @@
+#include <numeric>
 #include "test_utils.h"
 
 TEST(span, addNumberOnNoCapacityThrows) {
@@ -71,6 +72,17 @@ TEST(span, addingRangeTooBigThrows) {
 }
 
 TEST(span, manyNumbers) {
+	int elementCount = 2000;
+	std::vector<int> input(elementCount);
+	std::iota (std::begin(input), std::end(input), 0);
+	Span a(elementCount);
+	a.addRange(input.begin(), input.end());
+
+	ASSERT_EQ(1, a.shortestSpan());
+	ASSERT_EQ(1999, a.longestSpan());
+}
+
+TEST(span, manyRandomNumbers) {
 	int elementCount = 2000;
 	std::srand(unsigned(std::time(NULL)));
 	std::vector<int> input(elementCount);
