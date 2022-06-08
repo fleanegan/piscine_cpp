@@ -53,3 +53,17 @@ TEST(span, deepAssignment){
 
 	ASSERT_NE(b.longestSpan(), a.longestSpan());
 }
+
+TEST(span, manyNumbers){
+	int elementCount = 1000000;
+	std::srand(unsigned(std::time(NULL)));
+	std::vector<int> input(elementCount);
+	std::generate(input.begin(), input.end(), std::rand);
+	Span a(elementCount);
+	for (int i = 0; i < elementCount; ++i) {
+		a.addNumber(input.at(i));
+	}
+
+	std::cout << a.shortestSpan() << " is the shortest span" << std::endl;
+	std::cout << a.longestSpan() << " is the longest span" << std::endl;
+}
