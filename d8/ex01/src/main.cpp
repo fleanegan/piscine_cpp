@@ -9,12 +9,14 @@
 
 int main() {
 
-	std::srand(unsigned(std::time(NULL)));
-	std::vector<int> input(10);
-	std::generate(input.begin(), input.end(), std::rand);
-	std::copy(input.begin(),
-			  input.end(),
-			  std::ostream_iterator<int>(std::cout, " "));
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 	return 0;
 }
 

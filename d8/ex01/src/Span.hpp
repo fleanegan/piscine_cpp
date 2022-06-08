@@ -24,6 +24,7 @@ public:
 	void addNumber(int);
 	int shortestSpan();
 	int longestSpan();
+	void addRange(std::vector<int>::iterator beg, std::vector<int>::iterator end);
 };
 
 #endif //EX01_SPAN_HPP

@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include <limits>
 #include "Span.hpp"
 
 Span::Span(unsigned int maxCapacity) : \
@@ -38,8 +39,18 @@ void Span::addNumber(int newNumber) {
 }
 
 int Span::shortestSpan()  {
+	int globalShortestSpan = std::numeric_limits<int>::max();
+	int tmp;
+
 	prepareSpanCalculation();
-	return (container.at(1) - container.at(0));
+	for (size_t i = 0; i < container.size(); ++i) {
+		if (i < container.size() - 1){
+			tmp = container.at(i + 1) - container.at(i);
+			if (tmp < globalShortestSpan)
+				globalShortestSpan = tmp;
+		}
+	}
+	return globalShortestSpan;
 }
 
 int Span::longestSpan()  {
@@ -51,4 +62,15 @@ void Span::prepareSpanCalculation() {
 	if (currentIndex <= 1)
 		throw std::out_of_range("A Span requires at least two elements!");
 	std::sort(container.begin(), container.begin() + currentIndex);
+}
+
+void Span::addRange(std::vector<int>::iterator beg, std::vector<int>::iterator end) {
+	long additionalElements = std::distance(beg, end);
+
+	if (additionalElements > (maxCapacity - currentIndex))
+		throw std::out_of_range("the Span is full!");
+	while (beg != end){
+		addNumber(*beg);
+		beg++;
+	}
 }
