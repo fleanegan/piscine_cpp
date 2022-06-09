@@ -2,13 +2,12 @@
 #include "iter.hpp"
 
 #ifndef TESTING
-#include "iter.hpp"
 
 #define ARR_LEN 5
 
 template <typename T>
-void iterFunction(T* in){
-	(*in)++;
+void iterFunction(T& in){
+	in++;
 }
 
 template <typename T>

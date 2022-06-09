@@ -7,10 +7,18 @@
 
 
 template<typename T>
-void iter(T *a, int len, void(*iterFunction)(T*)) {
+void iter(T *a, int len, void(*iterFunction)(T&)) {
 	for (int i = 0; i < len; ++i) {
-		iterFunction(&a[i]);
+		iterFunction(a[i]);
 	}
 }
+
+template<typename T>
+void iter(const T *a, int len, void(*iterFunction)(const T&)) {
+	for (int i = 0; i < len; ++i) {
+		iterFunction(a[i]);
+	}
+}
+
 
 #endif //EX00_FUNCTIONS_HPP

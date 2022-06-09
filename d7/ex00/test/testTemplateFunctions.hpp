@@ -77,3 +77,11 @@ TEST(swap, worksWithStringsToo){
 	ASSERT_STREQ(a.c_str(), "mozzarella");
 	ASSERT_STREQ(b.c_str(), "tomate");
 }
+
+TEST(swap, workOnConst){
+	const int a = 0;
+	const int b = 1;
+
+	ASSERT_EQ(1, byReference::max<int>(a, b));
+	ASSERT_EQ(0, byReference::min<int>(a, b));
+}
