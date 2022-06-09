@@ -24,5 +24,7 @@ TEST(mutantStack, canIterate) {
 	m.push(2);
 	m.push(3);
 	m.push(4);
-	ASSERT_TRUE(std::is_sorted(m.begin(), m.end()));
+	for (MutantStack<int>::iterator it = m.begin(); it != m.end(); ++it){
+		std::cout << *it << std::endl;
+	}
 }
