@@ -29,7 +29,7 @@ namespace byReference{
 	}
 }
 
-namespace byValue{
+//namespace byValue{
 	template<typename T>
 	T min(T a, T b){
 		if (a < b)
@@ -43,6 +43,7 @@ namespace byValue{
 			return a;
 		return b;
 	}
-}
+//}
+//using namespace byValue;
 
 #endif //EX00_FUNCTIONS_HPP

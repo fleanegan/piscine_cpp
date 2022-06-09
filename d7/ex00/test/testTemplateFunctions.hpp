@@ -35,7 +35,7 @@ TEST(min, returnSecondOnEquality){
 }
 
 TEST(min, simpleTest){
-	int res = byValue::min<int>(4, 6);
+	int res = min<int>(4, 6);
 
 	ASSERT_EQ(res, 4);
 }
@@ -55,7 +55,7 @@ TEST(max, returnSecondOnEquality){
 }
 
 TEST(max, simpleTest){
-	int res = byValue::max<int>(4, 6);
+	int res = max<int>(4, 6);
 
 	ASSERT_EQ(res, 6);
 }
