@@ -2,8 +2,9 @@
 #include "test_utils.h"
 
 TEST(span, addNumberOnNoCapacityThrows) {
-	Span a(0);
+	Span a(1);
 
+	a.addNumber(3);
 	ASSERT_ANY_THROW(a.addNumber(3));
 }
 
@@ -80,17 +81,4 @@ TEST(span, manyNumbers) {
 
 	ASSERT_EQ(1, a.shortestSpan());
 	ASSERT_EQ(1999, a.longestSpan());
-}
-
-TEST(span, manyRandomNumbers) {
-	int elementCount = 2000;
-	std::srand(unsigned(std::time(NULL)));
-	std::vector<int> input(elementCount);
-	std::generate(input.begin(), input.end(), std::rand);
-	Span a(elementCount + 1);
-	a.addNumber(235);
-	a.addRange(input.begin(), input.end());
-
-	std::cout << a.shortestSpan() << " is the shortest span" << std::endl;
-	std::cout << a.longestSpan() << " is the longest span" << std::endl;
 }
