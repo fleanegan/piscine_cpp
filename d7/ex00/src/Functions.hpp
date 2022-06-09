@@ -13,33 +13,36 @@ void swap(T &a, T &b){
 	b = tmp;
 }
 
-//todo: discuss during defense
-//template<typename T>
-//T min(T &a, T &b){
-//	if (a < b)
-//		return a;
-//	return b;
-//}
-//
-//template<typename T>
-//T max(T &a, T &b){
-//	if (a > b)
-//		return a;
-//	return b;
-//}
+namespace byReference{
+	template<typename T>
+	T min(T &a, T &b){
+		if (a < b)
+			return a;
+		return b;
+	}
 
-template<typename T>
-T min(T a, T b){
-	if (a < b)
-		return a;
-	return b;
+	template<typename T>
+	T max(T &a, T &b){
+		if (a > b)
+			return a;
+		return b;
+	}
 }
 
-template<typename T>
-T max(T a, T b){
-	if (a > b)
-		return a;
-	return b;
+namespace byValue{
+	template<typename T>
+	T min(T a, T b){
+		if (a < b)
+			return a;
+		return b;
+	}
+
+	template<typename T>
+	T max(T a, T b){
+		if (a > b)
+			return a;
+		return b;
+	}
 }
 
 #endif //EX00_FUNCTIONS_HPP

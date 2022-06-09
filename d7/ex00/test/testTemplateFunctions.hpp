@@ -29,13 +29,13 @@ TEST(min, returnSecondOnEquality){
 	a.id = 0;
 	b.id = 1;
 
-	B res = min<B>(a, b);
+	B res = byReference::min<B>(a, b);
 
 	ASSERT_EQ(res.id, b.id);
 }
 
 TEST(min, simpleTest){
-	int res = min<int>(4, 6);
+	int res = byValue::min<int>(4, 6);
 
 	ASSERT_EQ(res, 4);
 }
@@ -49,13 +49,13 @@ TEST(max, returnSecondOnEquality){
 	a.id = 0;
 	b.id = 1;
 
-	B res = max<B>(a, b);
+	B res = byReference::max<B>(a, b);
 
 	ASSERT_EQ(res.id, b.id);
 }
 
 TEST(max, simpleTest){
-	int res = max<int>(4, 6);
+	int res = byValue::max<int>(4, 6);
 
 	ASSERT_EQ(res, 6);
 }
@@ -67,4 +67,13 @@ TEST(swap, simpleTest){
 
 	ASSERT_EQ(a, 1);
 	ASSERT_EQ(b, 0);
+}
+
+TEST(swap, worksWithStringsToo){
+	std::string a = "tomate";
+	std::string b = "mozzarella";
+	::swap<std::string>(a, b);
+
+	ASSERT_STREQ(a.c_str(), "mozzarella");
+	ASSERT_STREQ(b.c_str(), "tomate");
 }
