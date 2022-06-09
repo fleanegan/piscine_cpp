@@ -24,7 +24,9 @@ TEST(mutantStack, canIterate) {
 	m.push(2);
 	m.push(3);
 	m.push(4);
-	for (MutantStack<int>::iterator it = m.begin(); it != m.end(); ++it){
+	MutantStack<int> e;
+	e = m;
+	for (MutantStack<int>::iterator it = e.begin(); it != e.end(); ++it){
 		std::cout << *it << std::endl;
 	}
 }

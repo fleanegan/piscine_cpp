@@ -26,7 +26,7 @@ public:
 	MutantStack &operator=(const MutantStack &other) {
 		if (this == &other)
 			return *this;
-		//this->std::stack = other.std::stack;
+		this->c = other.c;
 		return *this;
 	}
 
